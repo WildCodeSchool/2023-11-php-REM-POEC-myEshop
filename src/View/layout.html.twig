@@ -9,12 +9,21 @@
 		<title>
 			{% block title %}{% endblock %}
 		</title>
+		{% block stylesheets %}{% endblock %}
 
 		<link rel="stylesheet" href="/assets/css/style.css"> {% block stylesheet %}{% endblock %}
 		</head>
 
-		<body style="background-color: lightgrey !important;">
+		<body>
 			{% include 'includes/_navbar.html.twig' %}
+			{% for flashMessage in session.getFlashMessages() %}
+				<div class="alert alert-{{ flashMessage.type }} text-dark fw-bold col-md-5 mx-auto my-3 text-center" role="alert">
+					<button type="button" class="btn-close btn btn-sm btn-{{ flashMessage.type }}" data-bs-dismiss="alert" aria-label="Close">
+						<span class="" aria-hidden="true"></span>
+					</button>
+					<strong>{{ flashMessage.message }}</strong>
+				</div>
+			{% endfor %}
 			<div style="min-height:80vh;" class="container-fluid p-0 m-0"> {% block content %}{% endblock %}
 				</div>
 				{% block javascript %}
