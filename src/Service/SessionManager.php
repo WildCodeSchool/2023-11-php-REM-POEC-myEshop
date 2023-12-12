@@ -129,15 +129,14 @@ class SessionManager implements SessionInterface
     }
 
     /**
-     * Checks if the logged in user is an admin.
-     *
-     * @return bool True if the logged in user is an admin, false otherwise.
-     */
+    * Checks if the logged-in user is an admin.
+    *
+    * @return bool True if the logged-in user is an admin, false otherwise.
+    */
     public function isAdmin(): bool
     {
         if (isset($_SESSION['user']['roles'])) {
-            $userRoles = explode(',', $_SESSION['user']['roles']);
-            return in_array('ROLE_ADMIN', $userRoles);
+            return strpos($_SESSION['user']['roles'], 'ROLE_ADMIN') !== false;
         }
         return false;
     }
