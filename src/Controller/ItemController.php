@@ -38,7 +38,7 @@ class ItemController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
-            $item = array_map('trim', $_POST);
+
 
             // TODO validations (length, format...)
 
