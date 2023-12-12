@@ -39,6 +39,7 @@ class RegisterController extends AbstractController
                 $password = $_POST['password'] ?? '';
                 $cPassword = $_POST['c_password'] ?? '';
 
+                $error = true;
                 $isLastNameValid = $this->validationService->validateRegistrationTextFields($lastname);
                 $isFirstNameValid = $this->validationService->validateRegistrationTextFields($firstname);
                 $isEmailValid = $this->validationService->validateRegistrationEmail($email);
@@ -53,12 +54,18 @@ class RegisterController extends AbstractController
                         'password' => password_hash($password, PASSWORD_ARGON2I),
                         'roles' => 'ROLE_USER'
                     ]);
-
+                    $error = false;
                     $session->set('user', $user);
                     $session->addFlash('success', 'Votre compte a bien été créé');
-                    return $this->twig->render('Login/index.html.twig', ['session' => $session]);
+                    return $this->twig->render('Login/index.html.twig', [
+                        'session' => $session,
+                        'error' => $error
+                    ]);
                 } else {
-                    return $this->twig->render('Register/index.html.twig', ['session' => $session]);
+                    return $this->twig->render('Register/index.html.twig', [
+                        'session' => $session,
+                        'error' => $error
+                        ]);
                 }
             }
             return $this->twig->render('Register/index.html.twig');
