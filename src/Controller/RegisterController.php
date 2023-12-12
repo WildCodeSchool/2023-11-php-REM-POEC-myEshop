@@ -47,22 +47,31 @@ class RegisterController extends AbstractController
 
                 if ($isLastNameValid && $isFirstNameValid && $isEmailValid && $isPasswordValid) {
                     $user = new UserManager();
-                    $user->insert([
+                    $userId = $user->insert([
+                    'firstname' => $firstname,
+                    'lastname' => $lastname,
+                    'email' => $email,
+                    'password' => password_hash($password, PASSWORD_ARGON2I),
+                    'roles' => 'ROLE_USER'
+                    ]);
+
+                    $userData = [
+                        'id' => $userId,
                         'firstname' => $firstname,
                         'lastname' => $lastname,
                         'email' => $email,
-                        'password' => password_hash($password, PASSWORD_ARGON2I),
                         'roles' => 'ROLE_USER'
-                    ]);
+                    ];
+
                     $error = false;
-                    $session->set('user', $user);
+                    $session->set('user', $userData);
                     $session->addFlash('success', 'Votre compte a bien été créé');
-                    return $this->twig->render('Login/index.html.twig', [
+                    return $this->twig->render('login/index.html.twig', [
                         'session' => $session,
                         'error' => $error
                     ]);
                 } else {
-                    return $this->twig->render('Register/index.html.twig', [
+                    return $this->twig->render('register/index.html.twig', [
                         'session' => $session,
                         'error' => $error
                         ]);
