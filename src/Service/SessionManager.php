@@ -29,9 +29,9 @@ class SessionManager implements SessionInterface
 
     /**
      * @param string $key
-     * @return string|null
+     * @return mixed
      */
-    public function get(string $key): string|null
+    public function get(string $key)
     {
         return $this->has($key) ? $_SESSION[$key] : null;
     }
