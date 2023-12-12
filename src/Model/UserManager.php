@@ -11,8 +11,9 @@ class UserManager extends AbstractManager
      */
     public function insert(array $user): int
     {
-        // prepared request
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`firstname`, `lastname`, `email`, `password`, `roles`) VALUES (:firstname, :lastname, :email, :password, :roles)");
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
+        " (`firstname`, `lastname`, `email`, `password`, `roles`) 
+        VALUES (:firstname, :lastname, :email, :password, :roles)");
         $statement->bindValue('firstname', $user['firstname'], \PDO::PARAM_STR);
         $statement->bindValue('lastname', $user['lastname'], \PDO::PARAM_STR);
         $statement->bindValue('email', $user['email'], \PDO::PARAM_STR);
@@ -28,8 +29,10 @@ class UserManager extends AbstractManager
      */
     public function update(array $user): bool
     {
-        // prepared request
-        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `firstname` = :firstname, `lastname` = :lastname, `email` = :email, `password` = :password, `roles` = :roles WHERE id=:id");
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
+        " SET `firstname` = :firstname, `lastname` = :lastname, 
+        `email` = :email, `password` = :password, 
+        `roles` = :roles WHERE id=:id");
         $statement->bindValue('id', $user['id'], \PDO::PARAM_INT);
         $statement->bindValue('firstname', $user['firstname'], \PDO::PARAM_STR);
         $statement->bindValue('lastname', $user['lastname'], \PDO::PARAM_STR);
@@ -39,11 +42,17 @@ class UserManager extends AbstractManager
         return $statement->execute();
     }
 
-    public function verifEmail($email)
+    /**
+     * Verifies if an email exists in the database.
+     *
+     * @param string $email The email to verify.
+     * @return array|false The user data if the email exists, false otherwise.
+     */
+    public function verifEmail($email): array|false
     {
         $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " WHERE email=:email");
         $statement->bindValue('email', $email, \PDO::PARAM_STR);
         $statement->execute();
-        return $statement->fetch();
+        return $statement->fetch(\PDO::FETCH_ASSOC);
     }
 }

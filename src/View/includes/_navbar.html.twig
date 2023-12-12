@@ -24,21 +24,57 @@
 					<a class="nav-link" href="#">contact</a>
 				</li>
 			</ul>
+			<li class="nav-item dropdown" data-bs-theme="light">
+				<a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="theme-menu" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme">
+					<i class="bi bi-circle-half"></i>
+					<span class="d-lg-none ms-2">Toggle theme</span>
+				</a>
+				<ul class="dropdown-menu dropdown-menu-end">
+					<li>
+						<button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+							<i class="fa-regular fa-sun"></i>
+							<span class="ms-2">Light</span>
+						</button>
+					</li>
+					<li>
+						<button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="true">
+							<i class="fa-solid fa-moon"></i>
+							<span class="ms-2">Dark</span>
+						</button>
+					</li>
+				</ul>
+			</li>
 			<ul class="navbar-nav me-5">
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-						<i class="fa-solid fa-user-plus"></i>
-					</a>
-					<div class="dropdown-menu me-1 fw-bolder">
-						<a class="dropdown-item" href="#">inscription</a>
-						<a class="dropdown-item" href="#">connexion</a>
-					</div>
-				</li>
-			</ul>
-			{# <form class="d-flex">
-																																																																																													        <input class="form-control me-sm-2" type="search" placeholder="Search">
-																																																																																													        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-																																																																																													      </form> #}
+				{% if isLogged() %}
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle text-success" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+							<i class="fa-solid fa-user"></i>
+						</a>
+						<div class="dropdown-menu me-1 fw-bolder">
+							<a class="dropdown-item" href="#">profile</a>
+							{% if isAdmin() %}
+								<a class="dropdown-item" href="#">backoffice</a>
+							{% endif %}
+							<a class="dropdown-item" href="/logout">
+								<i class="fa-solid fa-power-off" alt="deconnexion"></i>
+							</a>
+						</div>
+					{% else %}
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+								<i class="fa-solid fa-user-plus"></i>
+							</a>
+							<div class="dropdown-menu me-1 fw-bolder">
+								<a class="dropdown-item" href="/register">inscription</a>
+								<a class="dropdown-item" href="/login">connexion</a>
+							</div>
+						{% endif %}
+					</li>
+				</ul>
+				{# <form class="d-flex">
+																																																																																																																																																																																																																        <input class="form-control me-sm-2" type="search" placeholder="Search">
+																																																																																																																																																																																																																        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+																																																																																																																																																																																																																      </form> #}
+			</div>
 		</div>
-	</div>
-</nav>
+	</nav>
