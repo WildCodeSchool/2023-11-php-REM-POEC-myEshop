@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use Twig\Environment;
-use Twig\Extension\DebugExtension;
+use App\Service\TwigService;
+use App\Service\SessionManager;
 use Twig\Loader\FilesystemLoader;
+use Twig\Extension\DebugExtension;
 
 /**
  * Initialized some Controller common features (Twig...)
@@ -12,7 +14,6 @@ use Twig\Loader\FilesystemLoader;
 abstract class AbstractController
 {
     protected Environment $twig;
-
 
     public function __construct()
     {
@@ -24,6 +25,9 @@ abstract class AbstractController
                 'debug' => true,
             ]
         );
+        $session = new SessionManager();
+
         $this->twig->addExtension(new DebugExtension());
+        $this->twig->addExtension(new TwigService($session));
     }
 }
