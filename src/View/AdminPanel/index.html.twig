@@ -1,11 +1,15 @@
+{% if not isAdmin() %}
+	{% do redirect('/home') %}
+{% endif %}
 {% extends 'base.html.twig' %}
+
+
 {% block title %}Admin Panel
 {% endblock %}
 
 {% block content %}
 
-	<section class="content_box">
-    </section>
+	<section class="content_box"></section>
 
 
 {% endblock %}
