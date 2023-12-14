@@ -118,15 +118,17 @@ class SessionManager implements SessionInterface
         return $flashMessages;
     }
 
+
     /**
-     * Checks if a user is logged in.
-     *
-     * @return bool True if the user is logged in, false otherwise.
-     */
+    * Checks if a user is logged in.
+    *
+    * @return bool True if the user is logged in, false otherwise.
+    */
     public function isLogged(): bool
     {
         return isset($_SESSION['user']);
     }
+
 
     /**
     * Checks if the logged-in user is an admin.

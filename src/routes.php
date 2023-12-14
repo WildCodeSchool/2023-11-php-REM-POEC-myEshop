@@ -16,5 +16,10 @@ return [
     'items/delete' => ['ItemController', 'delete',],
      'register' => ['RegisterController', 'register',],
     'login' => ['LoginController', 'login',],
-    'logout' => ['LoginController', 'logout',]
+    'logout' => ['LoginController', 'logout',],
+    'admin/category' => ['CategoryAdminController', 'index',],
+    'admin/category/create' => ['CategoryAdminController', 'create',],
+    'admin/category/delete' => ['CategoryAdminController', 'delete', ['id']],
+    'admin/category/update' => ['CategoryAdminController', 'update', ['id']],
+    'admin/category/show' => ['CategoryAdminController', 'show', ['id']],
 ];
