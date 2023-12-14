@@ -33,9 +33,8 @@ class LoginController extends AbstractController
                 if ($user && password_verify($password, $user['password'])) {
                     $this->session->set('user', $user);
                     $this->session->addFlash('success', 'Vous êtes connecté.');
-                    return $this->twig->render('Home/index.html.twig', [
-                        'session' => $this->session
-                        ]);
+                    header('Location: /');
+                    exit();
                 } else {
                     $this->session->addFlash('danger', 'Identifiants invalides.');
                     return $this->twig->render('login/index.html.twig', ['session' => $this->session]);

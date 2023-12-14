@@ -200,4 +200,16 @@ class ValidationService
             return true;
         }
     }
+
+    public function validateCategory(array $fields): bool
+    {
+        foreach ($fields as $key => $value) {
+            if (empty($value)) {
+                $this->session->addFlash('danger', "Le champ {$key} est requis");
+                $this->session->set("border", "border border-danger");
+                return false;
+            }
+        }
+        return true;
+    }
 }
