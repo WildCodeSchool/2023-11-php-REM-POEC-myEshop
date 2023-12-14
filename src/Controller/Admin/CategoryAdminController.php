@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Model\CategoryManager;
 use App\Service\SessionManager;
@@ -39,15 +39,12 @@ class CategoryAdminController extends AbstractController
             header('Location:/');
             exit();
         }
-        $categoryManager = $this->categoryManager;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $category = array_map('trim', $_POST);
             $this->validationService->validateCategory($category);
             if ($this->validationService->validateCategory($category)) {
-                $id = $categoryManager->insert($category);
-                return $this->twig->render('admin/category/index.html.twig', [
-                    'id' => $id,
-                ]);
+                header('Location: /admin/category');
+                exit();
             }
         }
         return $this->twig->render('admin/category/create.html.twig', [
