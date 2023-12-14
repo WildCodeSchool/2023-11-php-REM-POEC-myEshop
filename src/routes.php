@@ -8,7 +8,6 @@
 // e.g route '/item/edit?id=1' will execute $itemController->edit(1)
 return [
     '' => ['HomeController', 'index',],
-    'admin' => ['AdminController', 'index'],
     'items' => ['ItemController', 'index',],
     'items/edit' => ['ItemController', 'edit', ['id']],
     'items/show' => ['ItemController', 'show', ['id']],
@@ -17,9 +16,11 @@ return [
      'register' => ['RegisterController', 'register',],
     'login' => ['LoginController', 'login',],
     'logout' => ['LoginController', 'logout',],
+    'admin' => ['Admin\\AdminController', 'index'],
     'admin/category' => ['Admin\\CategoryAdminController', 'index',],
     'admin/category/create' => ['Admin\\CategoryAdminController', 'create',],
     'admin/category/delete' => ['Admin\\CategoryAdminController', 'delete', ['id']],
     'admin/category/update' => ['Admin\\CategoryAdminController', 'update', ['id']],
     'admin/category/show' => ['Admin\\CategoryAdminController', 'show', ['id']],
+
 ];
