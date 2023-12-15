@@ -3,19 +3,19 @@ body {
     margin:0;
     padding: 0;
     box-sizing: border-box;
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 h1{
-    color:blue;
-    text-align: center;
+    color:black;
+    text-align: justify;
     padding: 16px;
 }
 .index-titre{
     font-style: italic ;
 }
 h3{
-    text-align: center;
+    text-align: justify;
     padding: 16px;  
     font-size: 20px;
 }
@@ -29,7 +29,7 @@ h3{
     width: 25vw;
     padding:20px;
 }
-.logo, .accueil a {
+ .accueil a {
     display:flex;
     justify-content: space-between;
     align-items: center;
@@ -38,8 +38,8 @@ h3{
     padding: 10px;
 }
 .img_logo{
-    width: 60px;
-    height: 60px;
+    width: 13vh;
+    height: 12vh;
 }
 img{
     display: block;
@@ -70,3 +70,4 @@ img{
 .content_box{
     background-color: #f2f2f2;
 }
+
