@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use Twig\TwigFunction;
+use App\Model\CategoryManager;
 use App\Service\SessionManager;
 use Twig\Extension\AbstractExtension;
 
@@ -34,6 +35,7 @@ class TwigService extends AbstractExtension
             new TwigFunction('isLogged', [$this, 'isLogged']),
             new TwigFunction('isAdmin', [$this, 'isAdmin']),
             new TwigFunction('logOut', [$this, 'logOut']),
+            new TwigFunction('getCategories', [$this, 'getCategories']),
         ];
     }
 
@@ -63,5 +65,12 @@ class TwigService extends AbstractExtension
     public function logOut(): void
     {
         $this->sessionManager->logOut();
+    }
+
+
+    public function getCategories(): array
+    {
+        $categoryManager = new CategoryManager();
+        return $categoryManager->selectAll();
     }
 }

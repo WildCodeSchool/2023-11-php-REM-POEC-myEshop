@@ -30,6 +30,7 @@ class CategoryAdminController extends AbstractController
         $categories = $categoryManager->selectAll();
         return $this->twig->render('admin/category/index.html.twig', [
             'categories' => $categories,
+            'session' => $this->session
         ]);
     }
 
@@ -43,17 +44,17 @@ class CategoryAdminController extends AbstractController
             $category = array_map('trim', $_POST);
             $this->validationService->validateCategory($category);
             if ($this->validationService->validateCategory($category)) {
+                $this->categoryManager->insert($category);
                 header('Location: /admin/category');
                 exit();
             }
         }
         return $this->twig->render('admin/category/create.html.twig', [
-            'session' => $this->session,
-            'category' => $category ?? null,
+            'session' => $this->session
         ]);
     }
 
-    public function show($id): string
+    public function show(int $id): string
     {
         if (!$this->session->isAdmin()) {
             header('Location:/');
@@ -63,6 +64,7 @@ class CategoryAdminController extends AbstractController
         $category = $categoryManager->selectOneById($id);
         return $this->twig->render('admin/category/show.html.twig', [
             'category' => $category,
+            'session' => $this->session
         ]);
     }
 
@@ -78,17 +80,19 @@ class CategoryAdminController extends AbstractController
             $this->validationService->validateCategory($category);
             if ($this->validationService->validateCategory($category)) {
                 $categoryManager->update($category);
+                $this->session->addFlash('success', "La catégorie $category[name] a bien été modifiée");
                 header('Location: /admin/category');
                 exit();
             }
         }
         return $this->twig->render('admin/category/update.html.twig', [
             'category' => $categoryManager->selectOneById($id),
+            'session' => $this->session
         ]);
     }
 
 
-    public function delete(): string
+    public function delete(int $id): string
     {
         if (!$this->session->isAdmin()) {
             header('Location:/');
@@ -96,15 +100,16 @@ class CategoryAdminController extends AbstractController
         }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $categoryManager = $this->categoryManager;
-            $categoryId = is_numeric($_POST['id']) ? intval($_POST['id']) : 0;
-            $categoryManager->delete($categoryId);
+            $id = is_numeric($_POST['id']) ? intval($_POST['id']) : 0;
+            $categoryManager->delete($id);
+            $this->session->addFlash('success', "La catégorie numéro $id a bien été supprimée");
             header('Location: /admin/category');
             exit();
         }
         return $this->twig->render(
             'admin/category/delete.html.twig',
             [
-                'category' => $this->categoryManager->selectOneById($_GET['id']),
+                'category' => $this->categoryManager->selectOneById($id),
             ]
         );
     }
