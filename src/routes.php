@@ -16,11 +16,17 @@ return [
      'register' => ['RegisterController', 'register',],
     'login' => ['LoginController', 'login',],
     'logout' => ['LoginController', 'logout',],
+    'product' => ['ProductController', 'index',],
     'admin' => ['Admin\\AdminController', 'index'],
     'admin/category' => ['Admin\\CategoryAdminController', 'index',],
     'admin/category/create' => ['Admin\\CategoryAdminController', 'create',],
     'admin/category/delete' => ['Admin\\CategoryAdminController', 'delete', ['id']],
     'admin/category/update' => ['Admin\\CategoryAdminController', 'update', ['id']],
     'admin/category/show' => ['Admin\\CategoryAdminController', 'show', ['id']],
+    'admin/product' => ['Admin\\AdminProductController', 'index',],
+    'admin/product/create' => ['Admin\\AdminProductController', 'create',],
+    'admin/product/delete' => ['Admin\\AdminProductController', 'delete', ['id']],
+    'admin/product/update' => ['Admin\\AdminProductController', 'update', ['id']],
+    'admin/product/show' => ['Admin\\AdminProductController', 'show', ['id']],
 
 ];
