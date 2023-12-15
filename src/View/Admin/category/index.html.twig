@@ -1,4 +1,4 @@
-{% extends "layout.html.twig" %}
+{% extends "base.html.twig" %}
 {% block title %}Admin - Categories
 {% endblock %}
 {% block stylesheets %}{% endblock %}
@@ -9,30 +9,30 @@
 			<div class="col-12 col-md-6 mx-auto">
 				<a href="/" class="btn btn-primary btn-sm mb-4">Retour</a>
 				<a href="/admin/category/create" class="btn btn-success btn-sm mb-4">Ajouter une catégorie</a>
-				<table class="table table-hover table-striped">
+				<table class="table table-hover table-striped table-responsive">
 					<thead>
 						<tr>
-							<th>Id</th>
-							<th>Nom</th>
-							<th>Desciption</th>
-							<th>Actions</th>
+							<th scope="col-12">Id</th>
+							<th scope="col-12">Nom</th>
+							<th scope="col-12">Desciption</th>
+							<th scope="col-12">Actions</th>
 						</tr>
 					</thead>
 					<tbody>
 						{% for category in categories %}
 							<tr>
-								<td>{{ category.id }}</td>
-								<td>{{ category.name }}</td>
-								<td>{{ category.description|slice(0,50) }}...</td>
-								<td>
+								<td class="align-middle">{{ category.id }}</td>
+								<td class="align-middle">{{ category.name }}</td>
+								<td class="align-middle">{{ category.description|slice(0,50) }}...</td>
+								<td class="align-middle">
 									<div class="d-flex">
-										<a href="/admin/category/show?id={{ category.id }}" class="btn btn-info btn-sm" role="button">
+										<a href="/admin/category/show?id={{ category.id }}" class="m-1 fs-3 text-info" role="button">
 											<i class="fa-regular fa-eye"></i>
 										</a>
-										<a href="/admin/category/update?id={{ category.id }}" class="btn btn-success btn-sm" role="button">
+										<a href="/admin/category/update?id={{ category.id }}" class="m-1 fs-3 text-success" role="button">
 											<i class="fa-solid fa-pen-to-square"></i>
 										</a>
-										<a href="/admin/category/delete?id={{ category.id }}" class="btn btn-danger btn-sm" role="button" onclick="return confirm('Voulez-vous vraiment supprimer cette catégorie ?');">
+										<a href="/admin/category/delete?id={{ category.id }}" class="m-1 fs-3 text-danger" role="button" onclick="return confirm('Voulez-vous vraiment supprimer cette catégorie ?');">
 											<i class="fa-solid fa-delete-left"></i>
 										</a>
 									</div>

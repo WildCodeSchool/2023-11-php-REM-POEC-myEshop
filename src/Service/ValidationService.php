@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Model\UserManager;
 use App\Service\SessionManager;
 
 /**
@@ -12,6 +13,7 @@ use App\Service\SessionManager;
 class ValidationService
 {
     protected $session;
+    protected $userManager;
 
     /**
      * ValidationService constructor.
@@ -21,6 +23,7 @@ class ValidationService
     public function __construct(SessionManager $session)
     {
         $this->session = $session;
+        $this->userManager = new UserManager();
     }
 
     /**

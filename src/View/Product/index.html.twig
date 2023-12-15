@@ -5,12 +5,12 @@
 
 {% block content %}
 
-	<div class="container">
+	<div class="container p-0">
 		<h1></h1>
 		<div class="row">
 			{% for product in products %}
 				<div class="col-12 col-sm-6 col-md-4 col-xl-3 mb-3">
-					<div class="card" style="">
+					<div class="card shadow-sm p-1" style=" ">
 						<img style="height:200px; width:100%" src="{{product.illustration}}" class="card-img-top" alt="...">
 						<div class="card-body">
 							<h5 class="card-title">{{product.name}}</h5>

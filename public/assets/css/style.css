@@ -19,27 +19,17 @@ h3{
     padding: 16px;  
     font-size: 20px;
 }
-.bloc_admin{
-    display: flex;
-    min-height: 90vh;
-}
+
 
 .bloc_left{
     background-color: black;
-    width: 25vw;
     padding:20px;
+    min-height: 70vh!important;
 }
- .accueil a {
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    color:white;
-    font-size: 24px;
-    padding: 10px;
-}
+
 .img_logo{
-    width: 13vh;
-    height: 12vh;
+    width: 8vh;
+    height: 6vh;
 }
 img{
     display: block;
@@ -50,11 +40,7 @@ img{
 .accueil a{
     text-decoration: none;
 }
-.bloc_right{
-    width: 75vw;
-    display: flex;
-    flex-direction: column;
-}
+
 .nav_top{
     padding:20px;
     display: flex;
@@ -71,3 +57,23 @@ img{
     background-color: #f2f2f2;
 }
 
+
+
+@media screen and (max-width: 768px) {
+    .nav_top{
+        flex-direction: column;
+    }
+    .nav_titre{
+        margin-left: 0;
+    }
+    .bloc_left{
+        min-height: 0!important;
+    }
+    .bloc_right{
+        min-height: 0!important;
+    }
+    .bloc_right{
+        padding: 0;
+    }
+    
+}

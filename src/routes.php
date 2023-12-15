@@ -17,6 +17,7 @@ return [
     'login' => ['LoginController', 'login',],
     'logout' => ['LoginController', 'logout',],
     'product' => ['ProductController', 'index',],
+    'product/search' => ['ProductController', 'searchProduct', 'keyword'],
     'admin' => ['Admin\\AdminController', 'index'],
     'admin/category' => ['Admin\\CategoryAdminController', 'index',],
     'admin/category/create' => ['Admin\\CategoryAdminController', 'create',],

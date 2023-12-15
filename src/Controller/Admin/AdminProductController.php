@@ -111,4 +111,25 @@ class AdminProductController extends AbstractController
             'session' => $this->session
         ]);
     }
+
+    public function searchProduct($keyword): string
+    {
+        if (!$this->session->isAdmin()) {
+            header('Location:/');
+            exit();
+        }
+        $productManager = $this->productManager;
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $productArray = array_map('trim', $_POST);
+            $product = $productArray['product'];
+            $keyword = $productManager->searchP($product);
+            return $this->twig->render('admin/product/search.html.twig', [
+                'product' => $keyword,
+                'session' => $this->session
+            ]);
+        }
+        return $this->twig->render('base.html.twig', [
+            'session' => $this->session
+        ]);
+    }
 }

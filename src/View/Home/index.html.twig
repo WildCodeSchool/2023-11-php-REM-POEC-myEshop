@@ -1,31 +1,31 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-<!-- Carousel auto -->
-<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" style= "margin: 10px;">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="/assets/images/jjk.jpg" class="d-block w-100" alt="..." style= "height:40vh;">
-    </div>
-    <div class="carousel-item">
-      <img src="/assets/images/gojo.jpg" class="d-block w-100" alt="..." style= "height:40vh;">
-    </div>
-    <div class="carousel-item">
-      <img src="/assets/images/marvel comics.webp" class="d-block w-100" alt="..." style= "height:40vh;">
-    </div>
-    <div class="carousel-item">
-      <img src="/assets/images/comics2.jpg" class="d-block w-100" alt="..." style= "height:40vh;">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div> 
+	<!-- Carousel auto -->
+	<div id="carouselExampleAutoplaying" class="carousel slide p-0 m-0" data-bs-ride="carousel" style="margin: 10px;">
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img src="/assets/images/jjk.jpg" class="d-block w-100 rounded" alt="..." style="height:40vh;">
+			</div>
+			<div class="carousel-item">
+				<img src="/assets/images/gojo.jpg" class="d-block w-100 rounded" alt="..." style="height:40vh;">
+			</div>
+			<div class="carousel-item">
+				<img src="/assets/images/marvel comics.webp" class="d-block w-100 rounded" alt="..." style="height:40vh;">
+			</div>
+			<div class="carousel-item">
+				<img src="/assets/images/comics2.jpg" class="d-block w-100 rounded" alt="..." style="height:40vh;">
+			</div>
+		</div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Next</span>
+		</button>
+	</div>
 
 	<h1>Bienvenue chez
 		<span class="index-titre">My_Eshop.</span>
@@ -37,21 +37,21 @@
 			{{session.get('user').firstname|capitalize}}</p>
 	{% endif %}
 
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" style= "margin-left: 20%; margin-right: 20%; margin-top: 10%; w-auto;">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="/assets/images/Marvel-Comics-Logo.svg.png" class="d-block w-auto" alt="..." style= "height:20vh; margin-left:32%;">
-    </div>
-    <div class="carousel-item">
-      <img src="/assets/images/license demon.png" class="d-block w-auto" alt="..." style= "height:20vh; margin-left:40%;">
-    </div>
-    <div class="carousel-item">
-      <img src="/assets/images/DC_Comics_logo.png" class="d-block w-auto" alt="..." style= "height:20vh; margin-left:40%;">
-    </div>
-    <div class="carousel-item">
-      <img src="/assets/images/aot license.png" class="d-block w-auto" alt="..." style= "height:20vh; margin-left:25%;">
-    </div>
-  </div>
-</div>
+	<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" style="margin-left: 20%; margin-right: 20%; margin-top: 10%; w-auto;">
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img src="/assets/images/Marvel-Comics-Logo.svg.png" class="d-block w-auto" alt="..." style="height:20vh; margin-left:32%;">
+			</div>
+			<div class="carousel-item">
+				<img src="/assets/images/license demon.png" class="d-block w-auto" alt="..." style="height:20vh; margin-left:40%;">
+			</div>
+			<div class="carousel-item">
+				<img src="/assets/images/DC_Comics_logo.png" class="d-block w-auto" alt="..." style="height:20vh; margin-left:40%;">
+			</div>
+			<div class="carousel-item">
+				<img src="/assets/images/aot license.png" class="d-block w-auto" alt="..." style="height:20vh; margin-left:25%;">
+			</div>
+		</div>
+	</div>
 
 {% endblock %}
