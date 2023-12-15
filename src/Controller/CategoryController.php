@@ -3,16 +3,17 @@
 namespace App\Controller;
 
 use App\Model\CategoryManager;
+use App\Service\SessionManager;
 
 class CategoryController extends AbstractController
 {
-    public function index(): string
+    protected $categoryManager;
+    protected $session;
+
+    public function __construct()
     {
-        $categoryManager = new CategoryManager();
-        $categories = $categoryManager->selectAll();
-        return $this->twig->render('Category/index.html.twig', [
-            'categories' => $categories,
-            'toto' => 'Bonjour Monde',
-        ]);
+        parent::__construct();
+        $this->categoryManager = new CategoryManager();
+        $this->session = new SessionManager();
     }
 }
