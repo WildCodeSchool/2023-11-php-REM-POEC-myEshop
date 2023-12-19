@@ -38,14 +38,11 @@ class AdminUserController extends AbstractController
         }
         $session = $this->session;
 
-        // Assuming you have a UserManager that handles user data
         $userManager = new UserManager();
 
-        // Fetch the existing user data
         $user = $userManager->selectOneById($id);
 
         if (!$user) {
-            // Handle the case where the user with the given ID doesn't exist
             $session->addFlash('danger', 'Utilisateur non trouvé');
             return $this->twig->render('admin/user/index.html.twig', [
                 'session' => $session,
@@ -57,7 +54,6 @@ class AdminUserController extends AbstractController
                 $_POST[$key] = trim($value);
             }
 
-            // Validate the updated user data
             if (!$this->validationService->validatePost($_POST)) {
                 return $this->twig->render('admin/user/update.html.twig', [
                     'session' => $session,
