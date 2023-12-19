@@ -10,7 +10,10 @@
     "minimum-stability": "stable",
     "require": {
         "twig/twig": "^3.5.1",
-        "ext-pdo": "*"
+        "ext-pdo": "*",
+        "knplabs/knp-paginator-bundle": "^6.3",
+        "symfony/http-client": "^7.0",
+        "symfony/dom-crawler": "^7.0"
     },
     "require-dev": {
         "filp/whoops": "^2.15",

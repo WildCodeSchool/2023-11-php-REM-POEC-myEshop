@@ -28,4 +28,16 @@ class CategoryManager extends AbstractManager
         $statement->bindValue(':id', $category['id'], PDO::PARAM_INT);
         return $statement->execute();
     }
+
+    public function searchC(string $keyword): array
+    {
+        $statement = $this->pdo->prepare(
+            "SELECT * FROM " . self::TABLE . " 
+            WHERE `name` LIKE :keyword 
+            OR `description` LIKE :keyword OR `id` LIKE :keyword"
+        );
+        $statement->bindValue(':keyword', '%' . $keyword . '%', PDO::PARAM_STR);
+        $statement->execute();
+        return $statement->fetchAll();
+    }
 }

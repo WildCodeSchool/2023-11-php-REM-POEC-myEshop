@@ -8,6 +8,6 @@ class AdminController extends AbstractController
 {
     public function index(): string
     {
-        return $this->twig->render('AdminPanel/index.html.twig', []);
+        return $this->twig->render('admin/index.html.twig', []);
     }
 }

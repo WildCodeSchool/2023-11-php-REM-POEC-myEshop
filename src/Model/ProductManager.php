@@ -51,13 +51,48 @@ class ProductManager extends AbstractManager
         return $statement->execute();
     }
 
+
+    public function selectAllWithCategory(string $orderBy = '', string $direction = 'ASC'): array
+    {
+        $query = 'SELECT p.*, GROUP_CONCAT(c.name) AS category_names
+              FROM ' . static::TABLE . ' p
+              LEFT JOIN category c ON p.category_id = c.id
+              GROUP BY p.id';
+
+        if ($orderBy) {
+            $query .= ' ORDER BY p.' . $orderBy . ' ' . $direction;
+        }
+
+        $statement = $this->pdo->query($query);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    public function selectOneByIdWithCategory(int $id): array|false
+    {
+        $query = 'SELECT p.*, GROUP_CONCAT(c.name) AS category_names
+              FROM ' . static::TABLE . ' p
+              LEFT JOIN category c ON p.category_id = c.id
+              WHERE p.id = :id
+              GROUP BY p.id';
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetch();
+    }
+
+
+
     public function searchP(string $keyword): array
     {
-        $statement = $this->pdo->prepare(
-            "SELECT * FROM " . self::TABLE . " 
-            WHERE `name` LIKE :keyword 
-            OR `description` LIKE :keyword"
-        );
+        $query = "SELECT p.*, GROUP_CONCAT(c.name) AS category_names
+              FROM " . self::TABLE . " p
+              LEFT JOIN category c ON p.category_id = c.id
+              WHERE p.`name` LIKE :keyword 
+              OR p.`description` LIKE :keyword OR p.`id` LIKE :keyword
+              GROUP BY p.id";
+        $statement = $this->pdo->prepare($query);
         $statement->bindValue('keyword', '%' . $keyword . '%', PDO::PARAM_STR);
         $statement->execute();
 
