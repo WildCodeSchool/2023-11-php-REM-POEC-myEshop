@@ -38,12 +38,19 @@ class RegisterController extends AbstractController
                         'session' => $session,
                     ]);
                 }
+
                 $lastname = $_POST['lastname'] ?? '';
                 $firstname = $_POST['firstname'] ?? '';
                 $email = $_POST['email'] ?? '';
                 $password = $_POST['password'] ?? '';
 
                 $user = new UserManager();
+                if ($user->verifEmail($email)) {
+                    $session->addFlash('danger', 'Cet email est déjà utilisé');
+                    return $this->twig->render('register/index.html.twig', [
+                        'session' => $session,
+                    ]);
+                }
                 $user->insert([
                     'firstname' => $firstname,
                     'lastname' => $lastname,
@@ -56,11 +63,11 @@ class RegisterController extends AbstractController
                 exit();
             }
             return $this->twig->render('register/index.html.twig', [
-                'session' => $session
+                'session' => $session,
             ]);
         }
         return $this->twig->render('Register/index.html.twig', [
-            'session' => $session
+            'session' => $session,
         ]);
     }
 }

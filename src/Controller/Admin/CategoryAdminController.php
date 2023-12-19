@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Model\ProductManager;
 use App\Model\CategoryManager;
 use App\Service\SessionManager;
 use App\Service\ValidationService;
@@ -12,6 +13,7 @@ class CategoryAdminController extends AbstractController
     protected $session;
     protected $validationService;
     protected $categoryManager;
+    protected $productManager;
 
     public function __construct()
     {
@@ -19,6 +21,7 @@ class CategoryAdminController extends AbstractController
         $this->session = new SessionManager();
         $this->validationService = new ValidationService($this->session);
         $this->categoryManager = new CategoryManager();
+        $this->productManager = new ProductManager();
     }
     public function index(): string
     {
@@ -103,7 +106,7 @@ class CategoryAdminController extends AbstractController
             $id = is_numeric($_POST['id']) ? intval($_POST['id']) : 0;
             $categoryManager->delete($id);
             $this->session->addFlash('success', "La catégorie numéro $id a bien été supprimée");
-            header('Location: /admin/category');
+            header('Location: /admin/category/');
             exit();
         }
         return $this->twig->render(
@@ -112,5 +115,33 @@ class CategoryAdminController extends AbstractController
                 'category' => $this->categoryManager->selectOneById($id),
             ]
         );
+    }
+
+    public function searchCategory(): string
+    {
+        if (!$this->session->isAdmin()) {
+            header('Location:/');
+            exit();
+        }
+        $categoryManager = $this->categoryManager;
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $categoryArray = array_map('trim', $_POST);
+            $category = $categoryArray['category'];
+            $categories = $categoryManager->searchC($category);
+
+            if ($categories) {
+                return $this->twig->render('admin/category/search.html.twig', [
+                    'categories' => $categories ,
+                    'session' => $this->session
+                ]);
+            } else {
+                header('Location: /admin/category/');
+                exit();
+            }
+        }
+
+        return $this->twig->render('includes/_sidebar_left_admin.html.twig', [
+            'session' => $this->session
+        ]);
     }
 }

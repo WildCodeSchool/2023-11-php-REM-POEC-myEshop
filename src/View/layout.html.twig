@@ -5,6 +5,7 @@
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" href="/assets/images/favicon.png">
+		<link rel="stylesheet" href="/assets/css/main-products.css">
 		<link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.css">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,13 +23,14 @@
 			{% for flashMessage in session.getFlashMessages() %}
 				<div class="alert alert-{{ flashMessage.type }} text-dark fw-bold col-md-5 mx-auto mt-3 p-2 text-center" role="alert">
 					<div class="col-12 d-flex justify-content-end
-																			">
+																																															">
 						<button type="button" class="btn-close btn btn-sm btn-{{ flashMessage.type }}" data-bs-dismiss="alert" aria-label="Close">
 							<span class="" aria-hidden="true"></span>
 						</button>
 					</div>
 					<strong>{{ flashMessage.message }}</strong>
 				</div>
+				{{ session.remove('flashMessages') }}
 			{% endfor %}
 
 			<div style="min-height:80vh;" class="container-fluid p-0 m-0"> {% block content %}{% endblock %}

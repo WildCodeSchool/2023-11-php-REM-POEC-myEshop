@@ -1,23 +1,20 @@
-<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg bg-primary py-2 px-1" data-bs-theme="dark">
 	<div class="container-fluid">
-
-		<div class="img_logo">
+		<div class="img_logo p-0 m-0">
 			<img src="/assets/images/logo.png" alt="logo">
 		</div>
-
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-
-		<div class="collapse navbar-collapse ms-5" id="navbarColor01">
-			<ul class="navbar-nav me-auto">
+		<div class="collapse navbar-collapse ms-3" id="navbarColor01">
+			<ul style="" class="navbar-nav me-auto">
 				<li class="nav-item">
-					<a class="nav-link active" href="/">accueil
+					<a class="nav-link" href="/">accueil
 						<span class="visually-hidden">(current)</span>
 					</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">nos comics</a>
+					<a class="nav-link" href="/product">nos comics</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">categories</a>
@@ -31,26 +28,6 @@
 					<a class="nav-link" href="#">contact</a>
 				</li>
 			</ul>
-			<li class="nav-item dropdown" data-bs-theme="light">
-				<a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="theme-menu" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme">
-					<i class="bi bi-circle-half"></i>
-					<span class="d-lg-none ms-2">Toggle theme</span>
-				</a>
-				<ul class="dropdown-menu dropdown-menu-end">
-					<li>
-						<button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
-							<i class="fa-regular fa-sun"></i>
-							<span class="ms-2">Light</span>
-						</button>
-					</li>
-					<li>
-						<button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="true">
-							<i class="fa-solid fa-moon"></i>
-							<span class="ms-2">Dark</span>
-						</button>
-					</li>
-				</ul>
-			</li>
 			<ul class="navbar-nav me-5">
 				{% if isLogged() %}
 					<li class="nav-item dropdown">

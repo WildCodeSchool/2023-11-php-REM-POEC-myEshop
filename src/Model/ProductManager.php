@@ -36,10 +36,10 @@ class ProductManager extends AbstractManager
     {
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `name` = :name,
          `category_id` = :category_id,
-          `illustration` = :illustration,
-           `description` = :description,
-           `price` = :price, `stock` = :stock
-            WHERE id=:id");
+         `illustration` = :illustration,
+         `description` = :description,
+         `price` = :price, `stock` = :stock
+          WHERE id=:id");
         $statement->bindValue('id', $item['id'], PDO::PARAM_INT);
         $statement->bindValue('name', $item['name'], PDO::PARAM_STR);
         $statement->bindValue('category_id', $item['category_id'], PDO::PARAM_INT);
@@ -49,5 +49,53 @@ class ProductManager extends AbstractManager
         $statement->bindValue('stock', $item['stock'], PDO::PARAM_INT);
 
         return $statement->execute();
+    }
+
+
+    public function selectAllWithCategory(string $orderBy = '', string $direction = 'ASC'): array
+    {
+        $query = 'SELECT p.*, GROUP_CONCAT(c.name) AS category_names
+              FROM ' . static::TABLE . ' p
+              LEFT JOIN category c ON p.category_id = c.id
+              GROUP BY p.id';
+
+        if ($orderBy) {
+            $query .= ' ORDER BY p.' . $orderBy . ' ' . $direction;
+        }
+
+        $statement = $this->pdo->query($query);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    public function selectOneByIdWithCategory(int $id): array|false
+    {
+        $query = 'SELECT p.*, GROUP_CONCAT(c.name) AS category_names
+              FROM ' . static::TABLE . ' p
+              LEFT JOIN category c ON p.category_id = c.id
+              WHERE p.id = :id
+              GROUP BY p.id';
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetch();
+    }
+
+
+
+    public function searchP(string $keyword): array
+    {
+        $query = "SELECT p.*, GROUP_CONCAT(c.name) AS category_names
+              FROM " . self::TABLE . " p
+              LEFT JOIN category c ON p.category_id = c.id
+              WHERE p.`name` LIKE :keyword 
+              OR p.`description` LIKE :keyword OR p.`id` LIKE :keyword
+              GROUP BY p.id";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('keyword', '%' . $keyword . '%', PDO::PARAM_STR);
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 }

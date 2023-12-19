@@ -1,0 +1,45 @@
+{% extends "base.html.twig" %}
+{% block title %}Modfier un utilisateur
+{% endblock %}
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+{% block content %}
+	<div class="container my-4">
+		<h1 class="text-center text-primary fw-bold col-7 mx-auto my-4 col-12 col-md-8 bg-light border boder-secondary shadow-sm">Inscription</h1>
+		<div style="display:none" id="" class="alert alert-danger col-md-5 mx-auto error-message"></div>
+		<form class="mx-auto text-primary col-12 col-md-8 bg-light border boder-secondary shadow-lg p-4" method="post">
+			<div class="row col-md-8 col-lg-10 col-xl-10 mx-auto">
+				<div class="col-12 col-md-6">
+					<label for="lastname" class="form-label">Nom</label>
+					<input type="text" value="{% if user.lastname is defined %}{{user.lastname}} {% endif %}" class="form-control {% if session.get('border') %}{{ session.get('border') }} {% endif %}" id="lastname" name="lastname">
+				</div>
+				<div class="col-12 col-md-6">
+					<label for="firstname" class="form-label">Prenom</label>
+					<input type="text" value="{% if user.firstname is defined %}{{user.firstname}} {% endif %}" class=" form-control" {% if session.get('border') %} {{ session.get('border') }} {% endif %} id="firstname" name=" firstname">
+				</div>
+				<div class="col-12 col-md-6">
+					<label for="roles" class="form-label">ROLE</label>
+					<select class="form-select" id="roles" name="roles" value="{% if user.roles is defined %}{{user.roles}} {% endif %}">
+						<option value="ROLE_USER">Utilisateur</option>
+						<option value="ROLE_ADMIN">Administrateur</option>
+					</select>
+				</div>
+				<div class="col-12 col-md-6 mb-3">
+					<label for="password" class="form-label">Mot de passe</label>
+					<input type="password" readonly class="form-control" id="password" name="password" value="{% if user.password is defined %}{{user.password}} {% endif %}">
+					<input type="hidden" name="c_password" value="{% if user.password is defined %}{{user.password}} {% endif %}">
+				</div>
+				<div class="col-12 mb-3">
+					<label for="email" class="form-label">Email</label>
+					<input type="text" readonly class="form-control" id="email" name="email" value="{% if user.email is defined %}{{user.email}} {% endif %}">
+				</div>
+				<input type="hidden" name="id" value="{% if user.id is defined %}{{user.id}} {% endif %}">
+				<div class="d-flex justify-content-end">
+					<button id="submit" class="btn btn-sm btn-primary my-3" type="submit">enregister</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	{% block javascripts %}{% endblock %}
+{% endblock %}

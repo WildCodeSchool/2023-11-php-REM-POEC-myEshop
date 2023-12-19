@@ -1,9 +1,7 @@
 {% extends "layout.html.twig" %}
 
 {% block title %}{% endblock %}
-{% block stylesheets %}
-	{{ parent() }}
-{% endblock %}
+{% block stylesheets %}{% endblock %}
 
 {% block content %}
 
@@ -26,8 +24,8 @@
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myNav" aria-controls="myNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="fas fa-bars"></span>
 				</button>
-				<div style="font-size: 0.5rem;" class="collapse navbar-collapse" id="myNav">
-					<div class="navbar-nav ms-2">
+				<div class="collapse navbar-collapse fs-6" id="myNav">
+					<div class="navbar-nav ms-auto">
 						<a class="nav-link" aria-current="page" href="/product">Voir tout</a>
 						{% for cat in getCategories() %}
 							<a class="nav-link category-link" href="#{{ cat.name }}">{{ cat.name }}</a>
@@ -43,12 +41,12 @@
 						<a href="/product/show?id={{ product.id }}">
 							<img src="{{ product.illustration }}"/></a>
 						<ul class="d-flex align-items-center justify-content-center list-unstyled icons">
-							<li class="icon">
+							<li class="icon icon-show">
 								<a href="/product/show?id={{ product.id }}">
 									<span class="fas fa-expand-arrows-alt"></span>
 								</a>
 							</li>
-							<li class="icon">
+							<li class="icon icon-1">
 								<a href="">
 									<span class="fas fa-shopping-bag"></span>
 								</a>

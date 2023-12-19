@@ -1,4 +1,4 @@
-{% extends 'layout.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}Admin - Suppression de catégorie
 {% endblock %}
@@ -11,7 +11,7 @@
 		<p class="text-center">Voulez-vous vraiment supprimer la catégorie "{{ category.name }}" ?</p>
 		<form method="POST">
 			<input type="hidden" name="id" value="{{ category.id }}">
-			<button onclick="return confirm('Etes-vous certain?');" type="submit" class="btn btn-danger my-3">Supprimer</button>
+			<button oonclick="return confirm('Voulez-vous vraiment supprimer cette catégorie ?');" type="submit" class=" btn btn-danger my-3">Supprimer</button>
 			<a href="admin/category" class="btn btn-secondary">Annuler</a>
 		</form>
 	</div>

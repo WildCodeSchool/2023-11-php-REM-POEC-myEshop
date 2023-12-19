@@ -7,16 +7,16 @@
 {% block content %}
 	<div class="container my-4">
 		<h1 class="text-center text-primary fw-bold col-7 mx-auto my-4 col-12 col-md-8 bg-light border boder-secondary shadow-sm">Inscription</h1>
-
+		<div style="display:none" id="" class="alert alert-danger col-md-5 mx-auto error-message"></div>
 		<form class="mx-auto text-primary col-12 col-md-8 bg-light border boder-secondary shadow-lg p-4" method="post">
 			<div class="row col-md-8 col-lg-10 col-xl-10 mx-auto">
 				<div class="col-12 col-md-6">
 					<label for="register-lastname" class="form-label">Nom</label>
-					<input type="text" class="form-control {% if session.get('border') %}{{ session.get('border') }} {% endif %}" id="register-lastname" name="lastname">
+					<input type="text" value="{{post.lastname}}" class="form-control {% if session.get('border') %}{{ session.get('border') }} {% endif %}" id="register-lastname" name="lastname">
 				</div>
 				<div class="col-12 col-md-6">
 					<label for="firstname" class="form-label">Prenom</label>
-					<input type="text" class="form-control {% if session.get('border') %}{{ session.get('border') }} {% endif %}" id="register-firstname" name="firstname">
+					<input type="text" class="form-control value=" {{post.lastname}} " {% if session.get('border') %}{{ session.get('border') }} {% endif %}" id="register-firstname" name="firstname">
 				</div>
 				<div class="col-12 mb-3">
 					<label for="register-email" class="form-label">Email</label>
@@ -25,11 +25,7 @@
 				<div class="col-12 col-md-6">
 					<label for="register-password" class="form-label">Mot de passe</label>
 					<input type="password" class="form-control {% if session.get('border') %} {{ session.get('border') }} {% endif %}" id="register-password" name="password">
-					{% if session.get('errorPassword') %}
-						<small class="fw-italic text-danger">Le mot de passe doit contenir au moins une majuscule et un cartcère spéciale
-							<i>([!@#$%^&*()_+{}\[\]:;<>,.?~\\-])</i>
-							</small>
-						{% endif %}
+					<small id="password-instructions" style="display: none;" class="fw-italic text-danger">Le mot de passe doit contenir 8 caractères, au moins une majuscule et un caractère spécial ([!@#$%^&*()_+{}[]:;<>,.?~\\-])</small>
 					</div>
 					<div class="col-12 col-md-6">
 						<label for="register-c-password" class="form-label">Confirmer le mot de passe</label>
@@ -37,10 +33,10 @@
 						{{ session.clear() }}
 					</div>
 					<div class="d-flex justify-content-end">
-						<button class="btn btn-sm btn-primary my-3" type="submit">s'incrire</button>
+						<button id="submit" class="btn btn-sm btn-primary my-3" type="submit">s'incrire</button>
 					</div>
 				</div>
 			</form>
 		</div>
+		{% block javascripts %}{% endblock %}
 	{% endblock %}
-	{% block javascripts %}{% endblock %}

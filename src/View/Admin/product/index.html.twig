@@ -1,62 +1,108 @@
-{% extends "layout.html.twig" %}
-{% block title %}Admin - Categories
+{% extends "base.html.twig" %}
+{% block title %}Admin - Listes des produits
 {% endblock %}
 {% block stylesheets %}{% endblock %}
 {% block content %}
-	<div class="container">
+	{# <div class="container">
+																																																																					<h1 class="text-center text-primary fw-bold col-12 col-md-6 mx-auto my-4  fw-bold bg-light border border-secondary p-4 shadow-sm">Gestion des produits</h1>
+																																																																					<div class="row my-2 mx-auto justify-content-center">
+																																																																						<div class="col-12 col-md-6 mx-auto">
+																																																																							<a href="/admin" class="btn btn-primary btn-sm mb-4">Retour</a>
+																																																																							<a href="/admin/product/create" class="btn btn-success btn-sm mb-4">Ajouter un produit</a>
+																																																																							<table class="table table-hover table-striped mx-auto">
+																																																																								<thead>
+																																																																									<tr>
+																																																																										<th>Id</th>
+																																																																										<th>Nom</th>
+																																																																										<th>Image</th>
+																																																																										<th>Desciption</th>
+																																																																										<th>Prix</th>
+																																																																										<th>Stock</th>
+																																																																										<th>Meilleur vente</th>
+																																																																										<th>Actions</th>
+																																																																									</tr>
+																																																																								</thead>
+																																																																								<tbody>
+																																																																									{% for product in products %}
+																																																																										<tr>
+																																																																											<td class="align-middle">{{ product.id }}</td>
+																																																																											<td class="align-middle">{{ product.name }}</td>
+																																																																											<td class="align-middle"><img style="width:100px" class"img-fluid" src="{{ product.illustration}}" alt=""></td>
+																																																																											<td class="align-middle">{{ product.description|slice(0,50) }}...</td>
+																																																																											<td class="align-middle">{{ product.price }}</td>
+																																																																											<td class="align-middle">{{ product.stock }}</td>
+																																																																											<td class="align-middle">
+																																																																												<form action="">
+																																																																													<div class="form-check form-switch">
+																																																																														<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" value="">
+																																																																														<label class="form-check-label" for="flexSwitchCheckDefault"></label>
+																																																																													</div>
+																																																																												</form>
+																																																																											</td>
+																																																																											<td>
+																																																																												<div class="d-flex">
+																																																																													<a href="/admin/product/show?id={{ product.id }}" class="m-1 fs-3 text-info" role="button">
+																																																																														<i class="fa-regular fa-eye"></i>
+																																																																													</a>
+																																																																													<a href="/admin/product/update?id={{ product.id }}" class="m-1 fs-3 text-success" role="button">
+																																																																														<i class="fa-solid fa-pen-to-square"></i>
+																																																																													</a>
+																																																																													<a href="/admin/product/delete?id={{ product.id }}" class="m-1 fs-3 text-danger" role="button">
+																																																																														<i class="fa-solid fa-delete-left"></i>
+																																																																													</a>
+																																																																												</div>
+																																																																											</td>
+																																																																										</tr>
+																																																																									</td>
+																																																																								</tbody>
+																																																																							</tr>
+																																																																						{% endfor %}
+																																																																					</tbody>
+																																																																				</table>
+																																																																			</div></div></div> #}
+	<div class="container p-0">
 		<h1 class="text-center text-primary fw-bold col-12 col-md-6 mx-auto my-4  fw-bold bg-light border border-secondary p-4 shadow-sm">Gestion des produits</h1>
-		<div class="row my-2">
-			<div class="col-12 col-md-6 mx-auto">
-				<a href="/" class="btn btn-primary btn-sm mb-4">Retour</a>
-				<a href="/admin/product/create" class="btn btn-success btn-sm mb-4">Ajouter un produit</a>
-				<table class="table table-hover table-striped">
-					<thead>
-						<tr>
-							<th>Id</th>
-							<th>Nom</th>
-							<th>Image</th>
-							<th>Desciption</th>
-							<th>Prix</th>
-							<th>Stock</th>
-							<th>Meilleur vente</th>
-							<th>Actions</th>
-						</tr>
-					</thead>
-					<tbody>
-						{% for product in products %}
-							<tr>
-								<td>{{ product.id }}</td>
-								<td>{{ product.name }}</td>
-								<td><img style="width:100px" class"img-fluid" src="{{ product.illustration}}" alt=""></td>
-								<td>{{ product.description|slice(0,50) }}...</td>
-								<td>{{ product.price }}</td>
-								<td>{{ product.stock }}</td>
-								<td>
-									<form action="">
-										<div class="form-check form-switch">
-											<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" value="">
-											<label class="form-check-label" for="flexSwitchCheckDefault"></label>
-										</div>
-									</form>
-								</td>
-								<td>
-									<div class="d-flex">
-										<a href="/admin/product/show?id={{ product.id }}" class="btn btn-info btn-sm" role="button">
-											<i class="fa-regular fa-eye"></i>
-										</a>
-										<a href="/admin/product/update?id={{ product.id }}" class="btn btn-success btn-sm" role="button">
-											<i class="fa-solid fa-pen-to-square"></i>
-										</a>
-										<a href="/admin/product/delete?id={{ product.id }}" class="btn btn-danger btn-sm" role="button" onclick="return confirm('Voulez-vous vraiment supprimer cette catégorie ?');">
-											<i class="fa-solid fa-delete-left"></i>
-										</a>
-									</div>
-								</td>
-							</tr>
-						</td>
-					</tbody>
-				</tr>
+		<div class="row my-2 mx-auto col-5 justify-content-center">
+			<a href="/admin" class="btn btn-primary btn-sm mb-4">Retour</a>
+			<a href="/admin/product/create" class="btn btn-success btn-sm mb-4">Ajouter un produit</a>
+		</div>
+		<div class="row">
+			{% for product in products %}
+				<div style="" class="col-12 col-sm-6 col-md-4 col-xl-3 mb-3">
+					<div class="card shadow-sm p-1 mx-1" style=" ">
+						<img style="max-height:200px !important; width:100%" src="{{product.illustration}}" class="card-img-top img-fluid" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">{{product.name}}
+								- ID:
+								{{product.id}}</h5>
+							<h6>Catégorie:
+								{{product.category_id }}</h6>
+							<hr>
+
+							<p class="card-text p-2 border text-center">{{product.description|slice(0,100)}}</p>
+							<div class="d-flex justify-content-between">
+								<p class="">stock:
+									{{product.stock}}</p>
+								<p class="">prix:
+									{{product.price}}€</p>
+							</div>
+							<div class="d-flex justify-content-center">
+								<a href="/admin/product/show?id={{ product.id }}" class="m-1 fs-3 text-info" role="button">
+									<i class="fa-regular fa-eye"></i>
+								</a>
+								<a href="/admin/product/update?id={{ product.id }}" class="m-1 fs-3 text-success" role="button">
+									<i class="fa-solid fa-pen-to-square"></i>
+								</a>
+								<a href="/admin/product/delete?id={{ product.id }}" class="m-1 fs-3 text-danger" role="button">
+									<i class="fa-solid fa-delete-left"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
 			{% endfor %}
-		</tbody>
-	</table>
-</div></div></div>{% block javascripts %}{% endblock %}{% endblock %}
+
+		</div>
+	</div>
+	{% block javascripts %}{% endblock %}
+{% endblock %}
