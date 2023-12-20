@@ -19,6 +19,7 @@ return [
     'product' => ['ProductController', 'index',],
     'product/show' => ['ProductController', 'show', ['id']],
     'product/search' => ['ProductController', 'searchProduct',],
+    'category' => ['CategoryController', 'index', ['id']],
     'admin' => ['Admin\\AdminController', 'index'],
     'admin/category' => ['Admin\\CategoryAdminController', 'index',],
     'admin/category/create' => ['Admin\\CategoryAdminController', 'create',],
