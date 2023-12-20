@@ -11,6 +11,7 @@
 					<h5 class="card-title">{{product.name}}</h5>
 					<h6>{{product.category_names}}</h6>
 					<p class="card-text">{{product.description|slice(0,100)}}</p>
+					<p>{{ (product.price/100)|number_format(2,",",".") }}</p>
 					<a href="" class="btn btn-success">Ajouter</a>
 				</div>
 			</div>

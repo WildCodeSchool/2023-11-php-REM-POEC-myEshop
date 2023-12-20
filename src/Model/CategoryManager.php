@@ -29,6 +29,20 @@ class CategoryManager extends AbstractManager
         return $statement->execute();
     }
 
+    public function selectAllProductByCategoryId(int $id): array
+    {
+        $query = "SELECT p.* , c.name as name_category
+         FROM product as p 
+         INNER JOIN category as c ON p.category_id = c.id 
+         WHERE c.id= :id";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(":id", $id, PDO::PARAM_INT);
+
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
+
     public function searchC(string $keyword): array
     {
         $statement = $this->pdo->prepare(
