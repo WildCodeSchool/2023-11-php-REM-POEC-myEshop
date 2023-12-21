@@ -36,7 +36,7 @@ class ProductController extends AbstractController
     {
 
         $productManager = $this->productManager;
-        $product = $productManager->selectOneById($id);
+        $product = $productManager->selectOneByIdWithCategory($id);
         return $this->twig->render('product/show.html.twig', [
             'product' => $product,
             'session' => $this->session

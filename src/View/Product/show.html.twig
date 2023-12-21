@@ -4,34 +4,24 @@
 {% endblock %}
 {% block content %}
 	<div class="container">
-		{# <div class="col-12 col-sm-6 col-md-4 col-xl-3 mb-3 mx-auto my-5 d-flex justify-content-around"> #}
+		
 		<div class="row col-12 my-5 d-flex justify-content-around gap-2 medium" >
-			{# <div class="d-flex justify-content-around flex-wrap gap-2">	 #}
-				{# <div class="card shadow-sm p-1" style=" ">
-					<img style="height:200px; width:100%" src="{{product.illustration}}" class="card-img-top" alt="...">
-					<div class="card-body">
-						<h5 class="card-title">{{product.name}}</h5>
-						<h6>{{product.category_names}}</h6>
-						<p class="card-text">{{product.description|slice(0,100)}}</p>
-						<p>{{ (product.price/100)|number_format(2,",",".") }}</p>
-						<a href="" class="btn btn-success">Ajouter</a>
-					</div>
-				</div> #}
-				<div style="height:auto; width:30%" class="p_img" >
-					<img src="{{product.illustration}}" style="height:100%; width:100%;object-fit: cover;"  alt="{{product.name}}">
-				</div>
-				<div style="height:auto; width:65%" class="shadow-sm p-3 p_content">
-					<h5 class="text-center">{{product.name}}</h5>
-				
-					<h6 class="my-4">Categorie : {{product.category_names}}</h6>
-					<p class="mb-5">{{product.description}}</p>
+			
+			<div style="height:auto; width:30%" class="p_img" >
+				<img src="{{product.illustration}}" style="height:100%; width:100%;object-fit: cover;"  alt="{{product.name}}">
+			</div>
+			<div style="height:auto; width:65%" class="shadow-sm p-3 p_content">
+				<h5 class="text-center">{{product.name}}</h5>
+			
+				<h6 class="my-4">Categorie : {{product.category_names}}</h6>
+				<p class="mb-5">{{product.description}}</p>
 
-					<div class="d-flex justify-content-between">
-						<p> Prix: {{ (product.price/100)|number_format(2,",",".") }}€</p>
-						<a href="" class="btn btn-success rounded py-2 px-3">Ajouter</a>
-					</div> 
-				</div>
-			{# </div> #}
-		</div>
+				<div class="d-flex justify-content-between">
+					<p> Prix: {{ (product.price/100)|number_format(2,",",".") }}€</p>
+					<a href="" class="btn btn-success rounded py-2 px-3">Ajouter</a>
+				</div> 
+			</div>
+			
+		</div>		
 	</div>
 {% endblock %}
