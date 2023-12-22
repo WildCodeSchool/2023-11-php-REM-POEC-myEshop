@@ -75,6 +75,17 @@ img{
     .bloc_right{
         padding: 0;
     }
+    .medium{
+        flex-direction: column;
+    }
+    .p_img, .p_content{
+        width: 100%!important;
+    }
+    .p_img{
+        height: 400px!important;
+        padding: 0px !important;
+        margin-bottom: 20px;
+    }
     
 }
 
