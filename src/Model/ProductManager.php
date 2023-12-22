@@ -11,19 +11,19 @@ class ProductManager extends AbstractManager
     /**
      * Insert new item in database
      */
-    public function insert(array $item): int
+    public function insert(array $item, string $illustration): int
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`name`, `category_id`,
          `illustration`, `description`, `price`, `stock`) 
          VALUES 
          (:name,:category_id,:illustration,
          :description,:price,:stock)");
-        $statement->bindValue('name', $item['name'], PDO::PARAM_STR);
-        $statement->bindValue('category_id', $item['category_id'], PDO::PARAM_INT);
-        $statement->bindValue('illustration', $item['illustration'], PDO::PARAM_STR);
-        $statement->bindValue('description', $item['description'], PDO::PARAM_STR);
-        $statement->bindValue('price', $item['price'], PDO::PARAM_INT);
-        $statement->bindValue('stock', $item['stock'], PDO::PARAM_INT);
+        $statement->bindValue(':name', $item['name'], PDO::PARAM_STR);
+        $statement->bindValue(':category_id', $item['category_id'], PDO::PARAM_INT);
+        $statement->bindValue(':illustration', $illustration, PDO::PARAM_STR);
+        $statement->bindValue(':description', $item['description'], PDO::PARAM_STR);
+        $statement->bindValue(':price', $item['price'], PDO::PARAM_INT);
+        $statement->bindValue(':stock', $item['stock'], PDO::PARAM_INT);
 
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
@@ -32,7 +32,7 @@ class ProductManager extends AbstractManager
     /**
      * Update item in database
      */
-    public function update(array $item): bool
+    public function update(array $item, string $illustration): bool
     {
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `name` = :name,
          `category_id` = :category_id,
@@ -40,13 +40,13 @@ class ProductManager extends AbstractManager
          `description` = :description,
          `price` = :price, `stock` = :stock
           WHERE id=:id");
-        $statement->bindValue('id', $item['id'], PDO::PARAM_INT);
-        $statement->bindValue('name', $item['name'], PDO::PARAM_STR);
-        $statement->bindValue('category_id', $item['category_id'], PDO::PARAM_INT);
-        $statement->bindValue('illustration', $item['illustration'], PDO::PARAM_STR);
-        $statement->bindValue('description', $item['description'], PDO::PARAM_STR);
-        $statement->bindValue('price', $item['price'], PDO::PARAM_INT);
-        $statement->bindValue('stock', $item['stock'], PDO::PARAM_INT);
+        $statement->bindValue(':id', $item['id'], PDO::PARAM_INT);
+        $statement->bindValue(':name', $item['name'], PDO::PARAM_STR);
+        $statement->bindValue(':category_id', $item['category_id'], PDO::PARAM_INT);
+        $statement->bindValue(':illustration', $illustration, PDO::PARAM_STR);
+        $statement->bindValue(':description', $item['description'], PDO::PARAM_STR);
+        $statement->bindValue(':price', $item['price'], PDO::PARAM_INT);
+        $statement->bindValue(':stock', $item['stock'], PDO::PARAM_INT);
 
         return $statement->execute();
     }
@@ -76,7 +76,7 @@ class ProductManager extends AbstractManager
               WHERE p.id = :id
               GROUP BY p.id';
         $statement = $this->pdo->prepare($query);
-        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->bindValue(':id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
         return $statement->fetch();
@@ -93,7 +93,7 @@ class ProductManager extends AbstractManager
               OR p.`description` LIKE :keyword OR p.`id` LIKE :keyword
               GROUP BY p.id";
         $statement = $this->pdo->prepare($query);
-        $statement->bindValue('keyword', '%' . $keyword . '%', PDO::PARAM_STR);
+        $statement->bindValue(':keyword', '%' . $keyword . '%', PDO::PARAM_STR);
         $statement->execute();
 
         return $statement->fetchAll(PDO::FETCH_ASSOC);

@@ -58,7 +58,6 @@ class RegisterController extends AbstractController
                     'password' => password_hash($password, PASSWORD_ARGON2I),
                     'roles' => 'ROLE_USER'
                 ]);
-                $session->addFlash('success', 'Votre compte a bien été créé');
                 header('Location: /login');
                 exit();
             }
