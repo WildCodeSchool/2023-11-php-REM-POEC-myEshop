@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-primary py-2 px-1" data-bs-theme="dark">
+<nav style="background:black;" class="navbar navbar-expand-lg py-2 px-1" data-bs-theme="dark">
 	<div class="container-fluid">
 		<div class="img_logo p-0 m-0">
 			<img src="/assets/images/logo.png" alt="logo">
@@ -28,6 +28,16 @@
 					<a class="nav-link" href="#">contact</a>
 				</li>
 			</ul>
+			<form method="post" class="rounded ms-auto me-2" action="/product/search">
+				<div class="form-group d-flex">
+					<div style="width:100%;" class="form-outline mx-auto " data-mdb-input-init>
+						<input type="search" id="form1" name="product" class="form-control"/>
+					</div>
+					<button type="submit" class="btn btn-sm btn-primary ms-2">
+						<i class="fas fa-search fs-5"></i>
+					</button>
+				</div>
+			</form>
 			<ul class="navbar-nav me-5">
 				{% if isLogged() %}
 					<li class="nav-item dropdown">

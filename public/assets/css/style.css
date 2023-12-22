@@ -93,6 +93,7 @@ img{
 /***********************/
 /*carousel is_best or carousel product like*/
 /**********************/
+
 @media (max-width: 767px) {
 		.carousel-inner .carousel-item > div {
 			display: none;
