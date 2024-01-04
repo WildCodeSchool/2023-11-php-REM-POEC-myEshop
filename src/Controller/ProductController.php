@@ -34,18 +34,19 @@ class ProductController extends AbstractController
 
     public function show(int $id): string
     {
-
         $productManager = $this->productManager;
-        $product = $productManager->selectOneById($id);
+        $product = $productManager->selectOneByIdWithCategory($id);
+        $comments = $productManager->getAllCommentsProductId($id);
+
         return $this->twig->render('product/show.html.twig', [
             'product' => $product,
+            'comments' => $comments,
             'session' => $this->session
         ]);
     }
 
     public function searchProduct(): string
     {
-
         $productManager = $this->productManager;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $productArray = array_map('trim', $_POST);

@@ -13,7 +13,7 @@ return [
     'items/show' => ['ItemController', 'show', ['id']],
     'items/add' => ['ItemController', 'add',],
     'items/delete' => ['ItemController', 'delete',],
-     'register' => ['RegisterController', 'register',],
+    'register' => ['RegisterController', 'register',],
     'login' => ['LoginController', 'login',],
     'logout' => ['LoginController', 'logout',],
     'profile' => ['UserController', 'index',],
@@ -22,6 +22,7 @@ return [
     'product/show' => ['ProductController', 'show', ['id']],
     'product/search' => ['ProductController', 'searchProduct',],
     'category' => ['CategoryController', 'index', ['id']],
+    'comment/add' => ['CommentController', 'add'],
     'admin' => ['Admin\\AdminController', 'index'],
     'admin/category' => ['Admin\\CategoryAdminController', 'index',],
     'admin/category/create' => ['Admin\\CategoryAdminController', 'create',],
@@ -37,5 +38,4 @@ return [
     'admin/product/search' => ['Admin\\AdminProductController', 'searchProduct',],
     'admin/user' => ['Admin\\AdminUserController', 'index',],
     'admin/user/update' => ['Admin\\AdminUserController', 'update', ['id']],
-
 ];

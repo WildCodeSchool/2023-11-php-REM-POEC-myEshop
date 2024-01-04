@@ -20,6 +20,7 @@ class CategoryController extends AbstractController
     public function index(int $id): string
     {
         $products = $this->categoryManager->selectAllProductByCategoryId($id);
+
         return $this->twig->render("Category/index.html.twig", ['products' => $products]);
     }
 }
