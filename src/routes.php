@@ -16,6 +16,8 @@ return [
     'register' => ['RegisterController', 'register',],
     'login' => ['LoginController', 'login',],
     'logout' => ['LoginController', 'logout',],
+    'profile' => ['UserController', 'index',],
+    'profile/update' => ['UserController', 'update',],
     'product' => ['ProductController', 'index',],
     'product/show' => ['ProductController', 'show', ['id']],
     'product/search' => ['ProductController', 'searchProduct',],
