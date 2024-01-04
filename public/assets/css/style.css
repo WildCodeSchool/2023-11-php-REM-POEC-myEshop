@@ -56,7 +56,16 @@ img{
 .content_box{
     background-color: #f2f2f2;
 }
-
+.comment_item, .comment_item small{
+    text-decoration: none;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color:#3b3636;
+    transition: all 0.2s ease-in-out;
+}
+.comment_item:hover{
+    color: #0817f0;  
+    text-decoration: underline;
+}
 
 
 @media screen and (max-width: 768px) {

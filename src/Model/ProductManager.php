@@ -29,6 +29,24 @@ class ProductManager extends AbstractManager
         return (int)$this->pdo->lastInsertId();
     }
 
+    // Get all comment product Id
+    public function getAllCommentsProductId(int $id): array|false
+    {
+        $query = 'SELECT p.name AS "Nom livre", c.content, u.firstname, u.lastname, c.created_at 
+            FROM comment c
+            JOIN product p ON p.id = c.product_id
+            JOIN user u ON u.id = c.user_id
+            WHERE c.product_id = :id';
+
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+
     /**
      * Update item in database
      */
@@ -81,8 +99,6 @@ class ProductManager extends AbstractManager
 
         return $statement->fetch();
     }
-
-
 
     public function searchP(string $keyword): array
     {
