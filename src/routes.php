@@ -17,6 +17,7 @@ return [
     'login' => ['LoginController', 'login',],
     'logout' => ['LoginController', 'logout',],
     'profile' => ['UserController', 'index',],
+    'contact/add' => ['ContactController', 'add',],
     'profile/update' => ['UserController', 'update',],
     'product' => ['ProductController', 'index',],
     'product/show' => ['ProductController', 'show', ['id']],
