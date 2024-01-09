@@ -78,8 +78,6 @@ class OrderController extends AbstractController
 
             $this->orderDetailsManager->insert($orderDetails);
             $this->cart->remove();
-
-            $this->session->addFlash('success', 'Votre commande a bien été enregistrée');
             header('Location: /order/show?id=' . $orderId);
         }
     }
