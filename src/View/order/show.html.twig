@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Commande n°{{ order.order_id }}
+{% endblock %}
+
+{% block content %}
+	<div class="container col-6 fs-6">
+		<h1 class="text-center">Commande validée</h1>
+		{% if order %}
+			<div class="alert alert-success text-center mx-auto">
+				<h4>Commande
+					{{ order.order_id }}</h4>
+				<p>Référence de la commande :
+					{{ order.reference }}</p>
+				<p>Date de commande :
+					{{ order.created_at|date('d/m/Y H:i:s') }}</p>
+				<p>Adresse de livraison :
+					{{ order.address_name }}</p>
+			</div>
+		{% else %}
+			<p>Aucune commande trouvée.</p>
+		{% endif %}
+	</div>
+{% endblock %}

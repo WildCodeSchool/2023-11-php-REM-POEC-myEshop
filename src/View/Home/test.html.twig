@@ -1,0 +1,21 @@
+<div style="background-color:black;" class="container text-center my-3 col-12 col-md-9 py-4 px-5 border border-primary shadow-lg">
+	<h2 class="text-primary text-center fw-bold bg-white my-3 col-12 col-md-5 mx-auto border shadow-sm">Nos meilleurs ventes</h2>
+	<div class="row mx-auto my-auto justify-content-center">
+		<div id="recipeCarousel" class="carousel carousel2 slide" data-bs-ride="carousel">
+			<div class="carousel-inner" role="listbox">
+				{% for product in products %}
+					<div class="carousel-item2 carousel-item{% if loop.first %} active{% endif %}">
+						<div class="col-md-6 col-lg-4 col-xl-3 col-12">
+							<div class="card">
+								<div class="card-img">
+									<img style="max-height: 400px" src="/{{ product.illustration}}" class="img-fluid d-block w-100" alt="{{ product.name }}">
+								</div>
+								<div class="card-img-overlay">
+									<h4 style="background-color:crimson;" class=" text-white p-2 border-bottom-1 shadow-lg fw-bold text-justify">{{ product.name|slice(0,13)}}...</h4>
+									<h5 class="card-title text-center col-5 mx-auto bg-success text-white fw-bold">{{ (product.price / 100)|format(2,',', '.') }}€</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>

@@ -39,6 +39,15 @@
 				</div>
 			</form>
 			<ul class="navbar-nav me-5">
+				{% if getTotal() > 0 %}
+					<li class="nav-item">
+						<a class="nav-link" href="/cart">
+							<i class="fa-solid fa-shopping-cart"></i>
+							<span class="badge rounded-pill bg-danger">
+								{{(getTotal() / 100) | number_format(2, ',', '.')}}€</span>
+						</a>
+					</li>
+				{% endif %}
 				{% if isLogged() %}
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle text-success" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">

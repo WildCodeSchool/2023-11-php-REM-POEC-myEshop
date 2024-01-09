@@ -1,0 +1,43 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+	Mes adresses
+{% endblock %}
+
+{% block content %}
+
+	<section class="vh-80 container mx-auto" style="">
+		<h3 class="text-center">Mes adresses</h3>
+		<hr>
+
+		<div class="row mx-auto text-center my-5">
+			{% for address in addresses %}
+				<div class="card rounded shadow-sm col-md-3 m-1" style="width: 18rem;">
+					<div class="card-body">
+						<h5 class="card-title">{{address.name|upper}}</h5>
+						<p class="card-text">
+							{{address.adress}},<br>
+							{{address.postal}}
+							{{address.city}}
+							{{address.country}}
+						</p>
+						<p class="card-text">{{address.phone}}</p>
+						<div class="row justify-content-between px-2">
+							<a href="/address/update?id={{address.id}}" class="">Modifier</a>
+							<a href="/address/remove{{address.id}}" class="text-danger">Supprimer</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		<div class="">
+			<a href="/address/add" class="text-dark font-weight-bolder">
+				<b>+</b>
+				Ajouter une adresse</a>
+		</div>
+		<a class="text-dark font-weight-bolder" href="">Revenir sur mon profile</a>
+
+	</section>
+
+
+{% endblock %}

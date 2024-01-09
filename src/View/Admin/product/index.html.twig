@@ -37,7 +37,7 @@
 								<p class="">stock:
 									{{product.stock}}</p>
 								<p class="">prix:
-									{{product.price}}€</p>
+									{{ (product.price / 100)|format(2,',', '.') }}€</p>
 							</div>
 							<div class="d-flex justify-content-center">
 								<a href="/admin/product/show?id={{ product.id }}" class="m-1 fs-3 text-info" role="button">

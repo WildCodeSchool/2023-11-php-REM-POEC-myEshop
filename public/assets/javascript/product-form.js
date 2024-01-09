@@ -1,3 +1,4 @@
+/*A REFACTORISER*/
 document.addEventListener('DOMContentLoaded', function () {
     const rgxSpec = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/;
     const rgxNum = /[0-9]/;
