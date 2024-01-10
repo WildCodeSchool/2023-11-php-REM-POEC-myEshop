@@ -33,7 +33,7 @@ class SessionManager implements SessionInterface
      */
     public function get(string $key)
     {
-        return $this->has($key) ? $_SESSION[$key] : null;
+        return $this->has($key) ? $_SESSION[$key] : [];
     }
 
     /**
@@ -120,10 +120,10 @@ class SessionManager implements SessionInterface
 
 
     /**
-    * Checks if a user is logged in.
-    *
-    * @return bool True if the user is logged in, false otherwise.
-    */
+     * Checks if a user is logged in.
+     *
+     * @return bool True if the user is logged in, false otherwise.
+     */
     public function isLogged(): bool
     {
         return isset($_SESSION['user']);
@@ -131,10 +131,10 @@ class SessionManager implements SessionInterface
 
 
     /**
-    * Checks if the logged-in user is an admin.
-    *
-    * @return bool True if the logged-in user is an admin, false otherwise.
-    */
+     * Checks if the logged-in user is an admin.
+     *
+     * @return bool True if the logged-in user is an admin, false otherwise.
+     */
     public function isAdmin(): bool
     {
         if (isset($_SESSION['user']['roles'])) {

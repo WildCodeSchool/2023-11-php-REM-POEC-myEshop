@@ -71,7 +71,7 @@
     cursor: pointer
 }
 
-.container .product-item .product .icons .icon-1:hover {
+.container .product-item .product .icons .icon:hover {
     background-color: crimson;
     color: #fff
 }

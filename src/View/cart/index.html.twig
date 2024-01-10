@@ -1,0 +1,101 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Mon Panier
+{% endblock %}
+
+{% block content %}
+	<section class="container">
+		<div class="container h-100 py-5 p-5">
+			<div class="row d-flex justify-content-center align-items-center h-100 flex-fill">
+				<div class="col-12">
+					<div class="card card-registration card-registration-2" style="border-radius: 15px;">
+						<div class="card-body p-1">
+							<div class="row g-0 justify-content-center">
+								<div class="col-md-7">
+									<div class="p-5">
+										<div class="d-flex justify-content-between align-items-center mb-5">
+											<h2 class="fw-bold mb-0 text-black">Mon panier</h2>
+										</div>
+										<hr class="my-3">
+										{% if cart|length == 0 %}
+											<h4 class="text-center text-dark my-3">Panier vide...</h4>
+										{% else %}
+											{% for item in cart %}
+												{% set product = item.product %}
+												<div class="row mb-4 d-flex justify-content-between align-items-center flex-fill">
+													<div class="col-md-2 col-lg-2 col-xl-2">
+														<a href="">
+															<img src="/{{ product.illustration }}" class="img-fluid rounded" alt="{{ product.name }}">
+														</a>
+													</div>
+													<div class="row-cols-sm-1 col-md-3 col-lg-3 col-xl-3">
+														<h6 class="text-muted">{{ product.category }}</h6>
+														<a href="">
+															<h6 class="text-black mb-0">{{ product.name }}</h6>
+														</a>
+														<p class="m-0 p-0 fs-6">
+															<small>{{ product.description| slice(0, 50) }}...</small>
+														</p>
+													</div>
+													<div class="row-cols-sm-1 col-md-3 col-lg-3 col-xl-2 d-flex">
+														<a href="/cart/delete?id={{product.id}}" class="btn btn-link px-2" onclick="updateCart({{ product.id }}, {{ item.qty - 1 }})">
+															<i class="fas fa-minus"></i>
+														</a>
+														<a href="/cart/add?id={{product.id}}" class="btn btn-link px-2" onclick="updateCart({{ product.id }}, {{ item.qty + 1 }})">
+															<i class="fas fa-plus"></i>
+														</a>
+													</div>
+													<div class="row-cols-sm-1 col-md-3 col-lg-2 col-xl-2 offset-lg-1 fs-6">
+														<small class="mb-0">{{ (product.price / 100) | number_format(2, ',', '.') }}€</small>
+														<small class="mb-0">x{{ item.qty }}
+															-
+															<span class="fw-bold">{{ ((product.price * item.qty) / 100) | number_format(2, ',', '.') }}€</span>
+														</small>
+													</div>
+													<div class="row-cols-sm-1 row-cols-md-1 col-lg-1 col-xl-1 text-end">
+														<a href="/cart/unset-one?id={{product.id}}" class="text-muted" onclick="removeFromCart({{ product.id }})">
+															<i class="fa-regular fa-trash-can"></i>
+														</a>
+													</div>
+												</div>
+												<hr class="my-4">
+											{% endfor %}
+										{% endif %}
+										<div class="pt-4">
+											<h6 class="mb-0">
+												<a href="/product" class="text-body">
+													<i class="fas fa-long-arrow-alt-left me-2"></i>Revenir sur la boutique</a>
+											</h6>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-lg-4 bg-grey my-2 shadow-sm bg-primary fw-bold">
+									<div class="p-5">
+										{% if total > 0 %}
+											<div class="d-flex flex-column bg-light rounded p-2 fw-bold text-primary">
+												<h3 class="text-uppercase">Prix total:
+												</h3>
+												<h4 class="text-center my-1">{{(total / 100)| number_format(2, ',', '.')}}€</h4>
+											</div>
+											{% if isLogged() %}
+												<a href="/order" class="btn btn-success btn-block shadow-lg my-3">Procéder au paiment</a>
+											{% else %}
+												<a href="/login" class="btn btn-success btn-block shadow-lg my-3">Se connecter pour payer</a>
+											{% endif %}
+										{% endif %}
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	{% block stylesheets %}
+		<link href="assets/css/cart.css" rel="stylesheet">
+	{% endblock %}
+{% endblock %}

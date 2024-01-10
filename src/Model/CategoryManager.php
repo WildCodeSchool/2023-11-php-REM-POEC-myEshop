@@ -48,7 +48,7 @@ class CategoryManager extends AbstractManager
         $statement = $this->pdo->prepare(
             "SELECT * FROM " . self::TABLE . " 
             WHERE `name` LIKE :keyword 
-            OR `description` LIKE :keyword OR `id` LIKE :keyword"
+            OR `description` LIKE :keyword"
         );
         $statement->bindValue(':keyword', '%' . $keyword . '%', PDO::PARAM_STR);
         $statement->execute();

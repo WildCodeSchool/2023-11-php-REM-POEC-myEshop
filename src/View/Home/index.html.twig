@@ -8,7 +8,9 @@
 
 	<div id="carouselExampleAutoplaying" class="carousel slide p-0 m-0" data-bs-ride="carousel" style="margin: 10px;">
 		<div class="carousel-inner">
+
 			<div class="carousel-item active">			
+
 				<img src="/assets/images/jjk.jpg" class="d-block w-100 rounded" alt="..." style="height:40vh;">
 			</div>
 			<div class="carousel-item">
@@ -30,7 +32,6 @@
 			<span class="visually-hidden">Next</span>
 		</button>
 	</div>
-
 	<div class="container-fluid d-flex justify-content-center align-items-center text-white">
 		{% for res in resultats %}
 			<aside class="news col-12 col-md-3">
@@ -45,8 +46,16 @@
 			</aside>
 		{% endfor %}
 	</div>
-	<div style="background-color:black;" class="container text-center my-3 col-12 col-md-9 py-4 px-5 border border-primary shadow-lg">
-		<h2 class="text-primary text-center fw-bold bg-white my-3 col-12 col-md-5 mx-auto border shadow-sm">Nos meilleurs ventes</h2>
+	<main style=" text-align: center;">
+		<section style="margin: 0 auto;max-width: 150ch;">
+			<h1 style="text-align:center; margin-top:2%;">Lorem Ipsum</h1>
+			<p style="margin-top:2%;margin-bottom:5%;"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt magna sed metus rhoncus, in faucibus mauris hendrerit. Donec ac viverra ante, egestas condimentum enim.
+			Etiam ut dictum lorem, eget maximus nisi. Nunc hendrerit dolor non elit malesuada, id sollicitudin odio sodales. In hac habitasse platea dictumst. Aliquam sit amet imperdiet elit.
+			Nulla consequat consequat iaculis. Suspendisse tempor commodo nulla vel auctor. In hac habitasse platea dictumst. Curabitur felis sapien, fringilla et condimentum vel, volutpat ut nulla.</p>
+		</section>
+	</main>
+	<div style="background-color:#D5DBDB;border-radius: 10px;" class="container text-center my-3 col-12 col-md-9 py-4 px-5 border border-#BFC9CA shadow-lg">
+		<h2 class="text-primary text-center fw-bold my-3 col-12 col-md-5 mx-auto">Nos meilleurs ventes</h2>
 		<div class="row mx-auto my-auto justify-content-center">
 			<div id="recipeCarousel" class="carousel carousel2 slide" data-bs-ride="carousel">
 				<div class="carousel-inner" role="listbox">
@@ -54,14 +63,16 @@
 						<a href="/product/show?id={{product.id}}">
 							<div class="carousel-item2 carousel-item{% if loop.first %} active{% endif %}">
 								<div class="col-md-6 col-lg-4 col-xl-3 col-12">
-									<div class="card">
+									<div style="border-radius:10px" class="card">
 										<div class="card-img">
-											<img style="object-fit: cover !important; object-position: center top!important; height: 300px !important;" src="{{ product.illustration }}" class="img-fluid d-block w-100" alt="{{ product.name }}">
+											<img style="object-fit: cover !important; object-position: center top!important; height: 300px !important; border-radius:10px;" src="{{ product.illustration }}" class="img-fluid d-block w-100" alt="{{ product.name }}">
 										</div>
 										<div class="card-img-overlay fw-bold fs-2">
+
 											<h2 style="background-color:crimson;" class="card-title text-white p-2 border-bottom-1 shadow-lg fw-bold">{{ product.name }}</h2>
 											<div class="d-flex justify-content-center align-items-end">
 												<h2 class="badge bg-success rounded text-white fw-bolder py-2 px-4 mt-4">{{ (product.price/100)|number_format(2,",",".") }}€</h2>
+
 											</div>
 										</div>
 									</div>
@@ -79,25 +90,65 @@
 			</div>
 		</div>
 	</div>
-
+	<main style=" text-align: center;">
+		<section style="margin: 0 auto;max-width: 150ch;">
+			<p style="margin-top:9%;margin-bottom:5%;"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt magna sed metus rhoncus, in faucibus mauris hendrerit. Donec ac viverra ante, egestas condimentum enim.
+			Etiam ut dictum lorem, eget maximus nisi. Nunc hendrerit dolor non elit malesuada, id sollicitudin odio sodales. In hac habitasse platea dictumst. Aliquam sit amet imperdiet elit.
+			Nulla consequat consequat iaculis. Suspendisse tempor commodo nulla vel auctor. In hac habitasse platea dictumst. Curabitur felis sapien, fringilla et condimentum vel, volutpat ut nulla.</p>
+		</section>
+	</main>
+	<div style="background-color:#D5DBDB;border-radius: 10px;" class="container text-center my-3 col-12 col-md-9 py-4 px-5 border border-#BFC9CA shadow-lg">
+		<h2 class="text-primary text-center fw-bold my-3 col-12 col-md-5 mx-auto">Nos meilleurs prix</h2>
+		<div class="row mx-auto my-auto justify-content-center">
+			<div id="recipeCarousel" class="carousel carousel2 slide" data-bs-ride="carousel">
+				<div class="carousel-inner" role="listbox">
+					{% for product in products %}
+						<a href="/product/show?id={{product.id}}">
+							<div class="carousel-item2 carousel-item{% if loop.first %} active{% endif %}">
+								<div class="col-md-6 col-lg-4 col-xl-3 col-12">
+									<div style="border-radius:10px" class="card">
+										<div class="card-img">
+											<img style="object-fit: cover !important; object-position: center top!important; height: 300px !important; border-radius:10px;" src="{{ product.illustration }}" class="img-fluid d-block w-100" alt="{{ product.name }}">
+										</div>
+										<div class="card-img-overlay fw-bold fs-2">
+											{# <h2 style="background-color:crimson; border-radius:10px; font-size:20px;" class="card-title text-white p-2 border-bottom-1 shadow-lg fw-bold">{{ product.name }}</h2> #}
+											<div class="d-flex align-items-end">
+												<h2 style="font-size:20px;margin-top:80%;"class="badge bg-success rounded text-white fw-bolder py-2 px-3">{{ product.price }}€</h2>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+				<a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				</a>
+				<a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				</a>
+			</div>
+		</div>
+	</div>
 
 	{% block javascripts %}
 
 		<script>
 			let items = document.querySelectorAll('.carousel2 .carousel-item2')
-			items.forEach((el) => {
-				const minPerSlide = 6
-				let next = el.nextElementSibling
-				for (var i = 1; i < minPerSlide; i++) {
-					if (! next) {
-					next = items[0]
-				}
+items.forEach((el) => {
+const minPerSlide = 4
+let next = el.nextElementSibling
+for (var i = 1; i < minPerSlide; i++) {
+if (! next) {
+next = items[0]
+}
+let cloneChild = next.cloneNode(true)
+el.appendChild(cloneChild.children[0])
+next = next.nextElementSibling
+}
+})
 
-				let cloneChild = next.cloneNode(true)
-				el.appendChild(cloneChild.children[0])
-				next = next.nextElementSibling
-			}
-			});
 		</script>
 	{% endblock %}
 {% endblock %}
