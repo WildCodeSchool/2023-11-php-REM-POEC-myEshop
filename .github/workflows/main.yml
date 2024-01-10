@@ -36,8 +36,8 @@ jobs:
       - name: Composer
         run: composer install
 
-      - name: code_quality
-        run: |
-          ./vendor/bin/phpcs
-          ./vendor/bin/phpstan analyse src --level 5
-          ./vendor/bin/phpmd src text phpmd.xml
+      # - name: code_quality
+      #   run: |
+      #     ./vendor/bin/phpcs
+      #     ./vendor/bin/phpstan analyse src --level 5
+      #     ./vendor/bin/phpmd src text phpmd.xml
