@@ -7,7 +7,7 @@
 
 	<div id="carouselExampleAutoplaying" class="carousel slide p-0 m-0" data-bs-ride="carousel" style="margin: 10px;">
 		<div class="carousel-inner">
-			<div class="carousel-item active">																																																																																																																																																																																																																																																																																																																																								</div> #}
+			<div class="carousel-item active">
 				<img src="/assets/images/jjk.jpg" class="d-block w-100 rounded" alt="..." style="height:40vh;">
 			</div>
 			<div class="carousel-item">
@@ -45,78 +45,38 @@
 	</div>
 	<main style=" text-align: center;">
 		<section style="margin: 0 auto;max-width: 150ch;">
-			<h1 style="text-align:center; margin-top:2%;">Lorem Ipsum</h1>
-			<p style="margin-top:2%;margin-bottom:5%;"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt magna sed metus rhoncus, in faucibus mauris hendrerit. Donec ac viverra ante, egestas condimentum enim.
-			Etiam ut dictum lorem, eget maximus nisi. Nunc hendrerit dolor non elit malesuada, id sollicitudin odio sodales. In hac habitasse platea dictumst. Aliquam sit amet imperdiet elit.
-			Nulla consequat consequat iaculis. Suspendisse tempor commodo nulla vel auctor. In hac habitasse platea dictumst. Curabitur felis sapien, fringilla et condimentum vel, volutpat ut nulla.</p>
+			<h1 style="text-align:center; margin-top:2%;">myeshop</h1>
+			<p style="margin-top:2%;margin-bottom:5%;">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt magna sed metus rhoncus, in faucibus mauris hendrerit. Donec ac viverra ante, egestas condimentum enim.
+																																																																																																																																																																																																																																																																							Etiam ut dictum lorem, eget maximus nisi. Nunc hendrerit dolor non elit malesuada, id sollicitudin odio sodales. In hac habitasse platea dictumst. Aliquam sit amet imperdiet elit.
+																																																																																																																																																																																																																																																																							Nulla consequat consequat iaculis. Suspendisse tempor commodo nulla vel auctor. In hac habitasse platea dictumst. Curabitur felis sapien, fringilla et condimentum vel, volutpat ut nulla.</p>
 		</section>
 	</main>
-	<div style="background-color:#D5DBDB;border-radius: 10px;" class="container text-center my-3 col-12 col-md-9 py-4 px-5 border border-#BFC9CA shadow-lg">
-		<h2 class="text-primary text-center fw-bold my-3 col-12 col-md-5 mx-auto">Nos meilleurs ventes</h2>
+	<div style="background-color:black; border-radius: 10px;" class="container text-center my-3 col-12 col-md-10 py-4 px-5 border border-secondary shadow-lg">
+		<h2 class="text-primary badge badge-pill text-center bg-light fw-bold my-3 p-3 col-12 col-md-5 mx-auto">Nos meilleurs ventes</h2>
 		<div class="row mx-auto my-auto justify-content-center">
 			<div id="recipeCarousel" class="carousel carousel2 slide" data-bs-ride="carousel">
 				<div class="carousel-inner" role="listbox">
 					{% for product in products %}
-						<a href="/product/show?id={{product.id}}">
-							<div class="carousel-item2 carousel-item{% if loop.first %} active{% endif %}">
-								<div class="col-md-6 col-lg-4 col-xl-3 col-12">
-									<div style="border-radius:10px" class="card">
-										<div class="card-img">
-											<img style="object-fit: cover !important; object-position: center top!important; height: 300px !important; border-radius:10px;" src="{{ product.illustration }}" class="img-fluid d-block w-100" alt="{{ product.name }}">
-										</div>
-										<div class="card-img-overlay fw-bold fs-2">
-											{# <h2 style="background-color:crimson; border-radius:10px; font-size:20px;" class="card-title text-white p-2 border-bottom-1 shadow-lg fw-bold">{{ product.name }}</h2> #}
-											<div class="d-flex align-items-end">
-												<h2 style="font-size:20px;margin-top:80%;"class="badge bg-success rounded text-white fw-bolder py-2 px-3">{{ product.price }}€</h2>
-											</div>
-										</div>
+						<div class="carousel-item2 carousel-item{% if loop.first %} active{% endif %}">
+							<div class="col-md-6 col-lg-4 col-xl-3 col-12">
+								<div class="card">
+									<div class="card-img">
+										<img style="max-height: 400px" src="/{{ product.illustration}}" class="img-fluid d-block w-100" alt="{{ product.name }}">
 									</div>
-								</div>
-							</div>
-						</a>
-					{% endfor %}
-				</div>
-				<a class="carousel-control-prev bg-transparent w-auto" href="#recipeCarousel" role="button" data-bs-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				</a>
-				<a class="carousel-control-next bg-transparent w-auto" href="#recipeCarousel" role="button" data-bs-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				</a>
-			</div>
-		</div>
-	</div>
-	<main style=" text-align: center;">
-		<section style="margin: 0 auto;max-width: 150ch;">
-			<p style="margin-top:9%;margin-bottom:5%;"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt magna sed metus rhoncus, in faucibus mauris hendrerit. Donec ac viverra ante, egestas condimentum enim.
-			Etiam ut dictum lorem, eget maximus nisi. Nunc hendrerit dolor non elit malesuada, id sollicitudin odio sodales. In hac habitasse platea dictumst. Aliquam sit amet imperdiet elit.
-			Nulla consequat consequat iaculis. Suspendisse tempor commodo nulla vel auctor. In hac habitasse platea dictumst. Curabitur felis sapien, fringilla et condimentum vel, volutpat ut nulla.</p>
-		</section>
-	</main>
-	<div style="background-color:#D5DBDB;border-radius: 10px;" class="container text-center my-3 col-12 col-md-9 py-4 px-5 border border-#BFC9CA shadow-lg">
-		<h2 class="text-primary text-center fw-bold my-3 col-12 col-md-5 mx-auto">Nos meilleurs prix</h2>
-		<div class="row mx-auto my-auto justify-content-center">
-			<div id="recipeCarousel" class="carousel carousel2 slide" data-bs-ride="carousel">
-				<div class="carousel-inner" role="listbox">
-					{% for product in products %}
-						<a href="/product/show?id={{product.id}}">
-							<div class="carousel-item2 carousel-item{% if loop.first %} active{% endif %}">
-								<div class="col-md-6 col-lg-4 col-xl-3 col-12">
-									<div style="border-radius:10px" class="card">
-										<div class="card-img">
-											<img style="object-fit: cover !important; object-position: center top!important; height: 300px !important; border-radius:10px;" src="{{ product.illustration }}" class="img-fluid d-block w-100" alt="{{ product.name }}">
-										</div>
-										<div class="card-img-overlay fw-bold fs-2">
-											{# <h2 style="background-color:crimson; border-radius:10px; font-size:20px;" class="card-title text-white p-2 border-bottom-1 shadow-lg fw-bold">{{ product.name }}</h2> #}
-											<div class="d-flex align-items-end">
-												<h2 style="font-size:20px;margin-top:80%;"class="badge bg-success rounded text-white fw-bolder py-2 px-3">{{ product.price }}€</h2>
-											</div>
-										</div>
+									<div class="card-img-overlay">
+										<a class="nav-link" href="/product/show?id={{product.id}}">
+											<h4 style="background-color:crimson;" class=" text-white p-1 border-bottom-1 shadow-lg fw-bold text-justify">{{ product.name|slice(0,13)}}...</h4>
+
+											<h5 class="card-title text-center col-5 mx-auto bg-success text-white fw-bold">{{ (product.price / 100)|format(2,'.', ',') }}€</h5>
+										</a>
 									</div>
 								</div>
 							</div>
 						</div>
 					{% endfor %}
 				</div>
+
 				<a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
 					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 				</a>
@@ -126,15 +86,93 @@
 			</div>
 		</div>
 	</div>
+	<main style=" text-align: center;">
+		<section style="margin: 0 auto;max-width: 150ch;">
+			<p style="margin-top:9%;margin-bottom:5%;">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt magna sed metus rhoncus, in faucibus mauris hendrerit. Donec ac viverra ante, egestas condimentum enim.
+																																																																																																																																																																																																																																																																							Etiam ut dictum lorem, eget maximus nisi. Nunc hendrerit dolor non elit malesuada, id sollicitudin odio sodales. In hac habitasse platea dictumst. Aliquam sit amet imperdiet elit.
+																																																																																																																																																																																																																																																																							Nulla consequat consequat iaculis. Suspendisse tempor commodo nulla vel auctor. In hac habitasse platea dictumst. Curabitur felis sapien, fringilla et condimentum vel, volutpat ut nulla.</p>
+		</section>
+	</main>
+	<hr class="featurette-divider">
 
-	{% block javascripts %}
+	<div class="row featurette">
+		<div class="col-md-7">
+			<h2 class="featurette-heading">LICENCE
+				<span class="text-muted">MARVEL</span>
+			</h2>
+			<p class="lead">Marvel Worldwide Inc., plus communément appelé Marvel Comics ou simplement Marvel, est une subdivision de Marvel Entertainment et l'une des principales maisons d'édition américaines de comics. Martin Goodman fonde la société en 1938 pour profiter de l'engouement naissant pour les comics.</p>
+		</div>
+		<img src="/assets/images/licences/Marvel-Comics-Logo.svg.png" class="img-fluid d-block" style="max-width:350px; object-fit:contain"></img>
+</div>
 
-		<script>
-			let items = document.querySelectorAll('.carousel2 .carousel-item2')
+<hr class="featurette-divider">
+
+<div class="row featurette">
+	<div class="col-md-7 order-md-2">
+		<h2 class="featurette-heading">LICENCE
+			<span class="text-muted">DC COMICS</span>
+		</h2>
+		<p class="lead">DC Comics est l'une des principales maisons d’édition américaines de comics. DC Comics fait partie du conglomérat WarnerMedia. Les initiales « DC » sont une abréviation de « Detective Comics »</p>
+	</div>
+	<img src="/assets/images/licences/DC_Comics_logo.png" class="img-fluid d-block" style="width:350px; object-fit:contain"></img></div><hr class="featurette-divider"><div class="row featurette">
+<div class="col-md-7">
+	<h2 class="featurette-heading">
+		LICENCE
+		<span class="text-muted">DEMON SLAYER</span>
+	</h2>
+	<p class="lead">Demon Slayer, connue au Japon sous le nom Kimetsu no yaiba, est une série de manga écrite et dessinée par Koyoharu Gotōge. L'histoire suit le périple de Kamado Tanjirō qui cherche un moyen de rendre sa petite sœur Nezuko de nouveau humaine après sa transformation en démon.</p>
+</div>
+<img src="/assets/images/licences/license demon.png" class="img-fluid d-block" style="max-width:350px; object-fit:contain"></img></div><hr class="featurette-divider"><div style="background-color:#CACACA;border-radius: 10px;" class="container text-center my-5 col-12 col-md-10 py-4 px-5 border border-secondary shadow-lg"><h2 class="text-white badge badge-pill text-center bg-primary fw-bold my-3 p-3 col-12 col-md-5 mx-auto">Dernières entrées en boutique</h2><div class="row mx-auto my-auto justify-content-center">
+<div id="recipeCarousel" class="carousel carousel3 slide" data-bs-ride="carousel">
+	<div class="carousel-inner" role="listbox">
+		{% for product in lastProducts %}
+			<div class="carousel-item3 carousel-item {% if loop.first %} active{% endif %}">
+				<div class="col-md-6 col-lg-4 col-xl-3 col-12">
+					<div class="card">
+						<div class="card-img">
+							<img style="max-height: 400px" src="/{{ product.illustration}}" class="img-fluid d-block w-100" alt="{{ product.name }}">
+						</div>
+						<div class="card-img-overlay">
+							<a class="nav-link" href="/product/show?id={{product.id}}">
+								<h4 style="background-color:crimson;" class=" text-white p-1 border-bottom-1 shadow-lg fw-bold text-justify">{{ product.name|slice(0,13)}}...</h4>
+
+								<h5 class="card-title text-center col-5 mx-auto bg-success text-white fw-bold">{{ (product.price / 100)|format(2,'.', ',') }}€</h5>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
+	<a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
+		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	</a>
+	<a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+	</a>
+</div></div></div>{% block javascripts %}<script>
+let items = document.querySelectorAll('.carousel2 .carousel-item2')
+let items2 = document.querySelectorAll('.carousel3 .carousel-item3')
+
+items2.forEach((el) => {
+const minPerSlide2 = 4
+let next2 = el.nextElementSibling
+for (let i = 1; i < minPerSlide2; i++) {
+if (! next2) {
+next2 = items2[0]
+}
+let cloneChild2 = next2.cloneNode(true)
+el.appendChild(cloneChild2.children[0])
+next2 = next2.nextElementSibling
+}
+})
+
 items.forEach((el) => {
 const minPerSlide = 4
 let next = el.nextElementSibling
-for (var i = 1; i < minPerSlide; i++) {
+for (let i = 1; i < minPerSlide; i++) {
 if (! next) {
 next = items[0]
 }
@@ -142,7 +180,4 @@ let cloneChild = next.cloneNode(true)
 el.appendChild(cloneChild.children[0])
 next = next.nextElementSibling
 }
-})
-		</script>
-	{% endblock %}
-{% endblock %}
+})</script>{% endblock %}{% endblock %}

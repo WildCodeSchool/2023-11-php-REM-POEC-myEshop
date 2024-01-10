@@ -45,6 +45,20 @@ class ProductManager extends AbstractManager
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function hasUserPurchasedProduct(int $userId, int $productId): bool
+    {
+        $query = 'SELECT COUNT(*) FROM order_details od
+                  JOIN `order` o ON od.order_id = o.id
+                  WHERE o.user_id = :userId AND od.product_id = :productId';
+
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':userId', $userId, \PDO::PARAM_INT);
+        $statement->bindValue(':productId', $productId, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return (bool)$statement->fetchColumn();
+    }
+
 
 
     /**

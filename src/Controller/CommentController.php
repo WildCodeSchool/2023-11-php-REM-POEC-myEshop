@@ -3,16 +3,19 @@
 namespace App\Controller ;
 
 use App\Model\CommentManager;
+use App\Model\ProductManager;
 use App\Service\SessionManager;
 
 class CommentController extends AbstractController
 {
     protected $session;
+    protected $productManager;
 
     public function __construct()
     {
         parent::__construct();
         $this->session = new SessionManager();
+        $this->productManager = new ProductManager();
     }
 
     public function add()
@@ -27,7 +30,11 @@ class CommentController extends AbstractController
             ]);
         } else {
             $user = $this->session->get('user');
-
+            if (!$this->productManager->hasUserPurchasedProduct($user['id'], $_GET['id'])) {
+                $this->session->addFlash('info', 'Vous devez avoir acheté ce 
+                produit pour pouvoir poster un commentaire');
+                header('Location: /product/show?id=' . $_GET['id']);
+            }
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $credentials = array_map('trim', $_POST);
 
