@@ -23,9 +23,11 @@ class HomeController extends AbstractController
     public function index(): string
     {
         $products = $this->productManager->selectAllWithCategory();
+        $lastProducts = $this->productManager->selectLastProducts();
         return $this->twig->render('Home/index.html.twig', [
             'session' => $this->session,
             'products' => $products,
+            'lastProducts' => $lastProducts
         ]);
     }
 }

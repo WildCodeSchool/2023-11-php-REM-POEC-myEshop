@@ -8,17 +8,7 @@
 	<div id="carouselExampleAutoplaying" class="carousel slide p-0 m-0" data-bs-ride="carousel" style="margin: 10px;">
 		<div class="carousel-inner">
 			<div
-				class="carousel-item active">
-				{# <div class="container">
-																	<div class="carousel-caption text-right">
-																		<h1 class="fwt-bolder text-white ">Comic Ultra Verse</h1>
-																		<p class="hoverx fwt-bolder">Découvrez l'univers fascinant des comics et mangas ! Plongez dans nos pages remplies d'aventures épiques, de super-héros intrépides et de personnages inoubliables. Explorez notre collection de comics, manga et goodies.
-																		</p>
-																		<p class="text-center">
-																			<a href="/product" class="btn btn-lg btn-light shadow-sm" role="button">Découvri maintenant</a>
-																		</p>
-																	</div>
-																</div> #}
+				class="carousel-item active">																																																																																																																																																																																																																																																																																																																																								</div> #}
 				<img src="/assets/images/jjk.jpg" class="d-block w-100 rounded" alt="..." style="height:40vh;">
 			</div>
 			<div class="carousel-item">
@@ -40,7 +30,6 @@
 			<span class="visually-hidden">Next</span>
 		</button>
 	</div>
-
 	<div class="container-fluid d-flex justify-content-center align-items-center text-white">
 		{% for res in resultats %}
 			<aside class="news col-12 col-md-3">
@@ -126,26 +115,25 @@
 									</div>
 								</div>
 							</div>
-						</a>
+						</div>
 					{% endfor %}
 				</div>
-				<a class="carousel-control-prev bg-transparent w-auto" href="#recipeCarousel" role="button" data-bs-slide="prev">
+				<a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
 					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 				</a>
-				<a class="carousel-control-next bg-transparent w-auto" href="#recipeCarousel" role="button" data-bs-slide="next">
+				<a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
 					<span class="carousel-control-next-icon" aria-hidden="true"></span>
 				</a>
 			</div>
 		</div>
 	</div>
 
-	
 	{% block javascripts %}
 
 		<script>
 			let items = document.querySelectorAll('.carousel2 .carousel-item2')
 items.forEach((el) => {
-const minPerSlide = 6
+const minPerSlide = 4
 let next = el.nextElementSibling
 for (var i = 1; i < minPerSlide; i++) {
 if (! next) {

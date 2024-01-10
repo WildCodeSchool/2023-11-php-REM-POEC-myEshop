@@ -12,7 +12,7 @@ class UserManager extends AbstractManager
     public function insert(array $user): int
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
-        " (`firstname`, `lastname`, `email`, `password`, `roles`) 
+            " (`firstname`, `lastname`, `email`, `password`, `roles`) 
         VALUES (:firstname, :lastname, :email, :password, :roles)");
         $statement->bindValue('firstname', $user['firstname'], \PDO::PARAM_STR);
         $statement->bindValue('lastname', $user['lastname'], \PDO::PARAM_STR);
@@ -30,7 +30,7 @@ class UserManager extends AbstractManager
     public function update(array $user): bool
     {
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
-        " SET 
+            " SET 
         `firstname` = :firstname, 
         `lastname` = :lastname, 
         `email` = :email,
@@ -58,5 +58,14 @@ class UserManager extends AbstractManager
         $statement->bindValue('email', $email, \PDO::PARAM_STR);
         $statement->execute();
         return $statement->fetch(\PDO::FETCH_ASSOC);
+    }
+
+    public function hasAddress(int $id): bool
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM address WHERE user_id=:id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->rowCount() > 0;
     }
 }
