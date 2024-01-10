@@ -111,4 +111,15 @@ class ProductManager extends AbstractManager
         $id = $this->selectOneById($id);
         return $id['id'];
     }
+
+    public function selectLastProducts(int $limit = 10): array
+    {
+        $statement = $this->pdo->prepare(
+            'SELECT * FROM ' . self::TABLE . ' ORDER BY id DESC LIMIT :limit'
+        );
+        $statement->bindValue(':limit', $limit, PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

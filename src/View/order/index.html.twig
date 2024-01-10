@@ -24,10 +24,14 @@
 						<div class="col-2">
 							x
 							{{ products.qty}}
+							-
+							{{ (products.product.price/100)|number_format(2, ',', '.') }}€
 						</div>
 					</div>
 					<hr>
 				{% endfor %}
+				<p>Total:
+					{{(total/100)|number_format(2, ',', '.')}}€</p>
 			</div>
 			<div class="col-md-6">
 				<form action="/order/add" method="post">

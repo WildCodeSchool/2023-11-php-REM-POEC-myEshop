@@ -20,6 +20,7 @@ class OrderController extends AbstractController
     private $cart;
     private $orderDetailsManager;
 
+
     public function __construct()
     {
         parent::__construct();
@@ -36,7 +37,9 @@ class OrderController extends AbstractController
         if (count($this->cart->show()) > 0) {
             if (!$this->userManager->hasAddress($_SESSION['user']['id'])) {
                 $this->session->addFlash('error', 'Vous devez ajouter une adresse avant de passer commande');
-                header('Location: /address/add');
+                return $this->twig->render('address/add.html.twig', [
+                    'session' => $this->session
+                ]);
             }
             $addresses = $this->addressManager->selectAllAddressByUserId($_SESSION['user']['id']);
             $cartItems = $this->cart->show();
@@ -48,7 +51,9 @@ class OrderController extends AbstractController
             ]);
         } else {
             $this->session->addFlash('error', 'Votre panier est vide');
-            header('Location: /product');
+            return $this->twig->render('home/index.html.twig', [
+                'session' => $this->session
+            ]);
         }
     }
 
@@ -63,7 +68,6 @@ class OrderController extends AbstractController
 
             $orderId = $this->orderManager->insert($order);
             $orderDetails = [];
-
             foreach ($this->cart->show() as $cartItem) {
                 $orderDetail = [
                     'order_id' => $orderId,
@@ -75,7 +79,6 @@ class OrderController extends AbstractController
 
                 $orderDetails[] = $orderDetail;
             }
-
             $this->orderDetailsManager->insert($orderDetails);
             $this->cart->remove();
             header('Location: /order/show?id=' . $orderId);
@@ -83,12 +86,11 @@ class OrderController extends AbstractController
     }
 
 
-
-
     public function show($id)
     {
         $id = $_SESSION['user']['id'];
         $order = $this->orderManager->selectLastOrder($id);
-        return $this->twig->render('order/show.html.twig', ['order' => $order]);
+        $details = $this->orderDetailsManager->selectAllOrderDetails($order['order_id']);
+        return $this->twig->render('order/show.html.twig', ['order' => $order, 'details' => $details]);
     }
 }
