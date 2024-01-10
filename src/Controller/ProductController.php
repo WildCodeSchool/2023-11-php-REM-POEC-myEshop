@@ -24,7 +24,7 @@ class ProductController extends AbstractController
     {
         $data = $this->productManager->selectAllWithCategory();
         $page = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
-        $perPage = 2;
+        $perPage = 8;
         $products = $this->paginator->paginate($data, $page, $perPage);
 
         return $this->twig->render('product/index.html.twig', [
@@ -37,7 +37,6 @@ class ProductController extends AbstractController
         $productManager = $this->productManager;
         $product = $productManager->selectOneByIdWithCategory($id);
         $comments = $productManager->getAllCommentsProductId($id);
-
         return $this->twig->render('product/show.html.twig', [
             'product' => $product,
             'comments' => $comments,

@@ -1,0 +1,63 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<h1 class="h3 text-center">Passer votre commande</h1>
+		<p class="text-center">Veuillez préciser vos préférences de livraison avant de passer votre commande</p>
+		<hr>
+		<div class="row bg-white text-dark p-2 rounded shadow-sm">
+			<div class="div col-md-6" style="background-color: #f5fcf8">
+				<h5 class="my-3">Récapitulatif de commande</h5>
+				{% for products in cart %}
+					<div class="row mb-2">
+						<div class="col-2">
+							<img style="max-height:" src="/{{products.product.illustration}}" class="img-fluid rounded" alt="Cotton T-shirt">
+						</div>
+						<div class="col-8 font-weight-bold">
+							{{ products.product.name }}
+							<br>
+							<small>{{ products.product.subtitle }}
+							</small>
+						</div>
+						<div class="col-2">
+							x
+							{{ products.qty}}
+							-
+							{{ (products.product.price/100)|number_format(2, ',', '.') }}€
+						</div>
+					</div>
+					<hr>
+				{% endfor %}
+				<p>Total:
+					{{(total/100)|number_format(2, ',', '.')}}€</p>
+			</div>
+			<div class="col-md-6">
+				<form action="/order/add" method="post">
+					<div class="form-group">
+						<label for="addresses">Choisissez votre adresse</label>
+						<select class="form-control" id="address_id" name="address_id">
+							{% for address in addresses %}
+								<option value="{{ address.id }}">{{ address.address }}</option>
+							{% endfor %}
+						</select>
+					</div>
+					<div class="text-center mb-2">
+						<a href="/address/add">Ajouter une nouvelle adresse</a>
+					</div>
+					<button type="submit" class="btn btn-primary">Valider</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<style>
+		.form-check {
+			background-color: #f5fcf8;
+			padding: 20px 50px !important;
+			margin: 8px !important;
+			font-weight: bold;
+		}
+	</style>
+{% endblock %}

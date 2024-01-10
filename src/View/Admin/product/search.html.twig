@@ -16,7 +16,7 @@
 									{{product.category}}</h6>
 								<hr>
 								<h6 class="my-1">prix:
-									{{product.price}}€</h6>
+									{{ (product.price / 100)|format(2,',', '.') }}€</h6>
 								<h6 class="my-1">stock:
 									{{product.stock}}</h6>
 								<p class="card-text mt-2 border rounded p-2">{{ product.description|slice(0, 50) }}...</p>

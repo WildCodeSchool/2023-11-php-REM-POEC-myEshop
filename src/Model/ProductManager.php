@@ -106,10 +106,34 @@ class ProductManager extends AbstractManager
               FROM " . self::TABLE . " p
               LEFT JOIN category c ON p.category_id = c.id
               WHERE p.`name` LIKE :keyword 
-              OR p.`description` LIKE :keyword OR p.`id` LIKE :keyword
               GROUP BY p.id";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':keyword', '%' . $keyword . '%', PDO::PARAM_STR);
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getProductPrice(int $id): int
+    {
+        $statement = $this->pdo->prepare("SELECT price FROM " . self::TABLE . " WHERE id=:id");
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetchColumn();
+    }
+
+    public function getProductId(int $id): int
+    {
+        $id = $this->selectOneById($id);
+        return $id['id'];
+    }
+
+    public function selectLastProducts(int $limit = 10): array
+    {
+        $statement = $this->pdo->prepare(
+            'SELECT * FROM ' . self::TABLE . ' ORDER BY id DESC LIMIT :limit'
+        );
+        $statement->bindValue(':limit', $limit, PDO::PARAM_INT);
         $statement->execute();
 
         return $statement->fetchAll(PDO::FETCH_ASSOC);

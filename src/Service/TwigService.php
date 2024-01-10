@@ -3,6 +3,8 @@
 namespace App\Service;
 
 use Twig\TwigFunction;
+use App\Service\Cart\Cart;
+use App\Model\ProductManager;
 use App\Model\CategoryManager;
 use App\Service\SessionManager;
 use Twig\Extension\AbstractExtension;
@@ -36,6 +38,7 @@ class TwigService extends AbstractExtension
             new TwigFunction('isAdmin', [$this, 'isAdmin']),
             new TwigFunction('logOut', [$this, 'logOut']),
             new TwigFunction('getCategories', [$this, 'getCategories']),
+            new TwigFunction('getTotal', [$this, 'getTotal']),
         ];
     }
 
@@ -72,5 +75,11 @@ class TwigService extends AbstractExtension
     {
         $categoryManager = new CategoryManager();
         return $categoryManager->selectAll();
+    }
+
+    public function getTotal(): float
+    {
+        $cart = new Cart($this->sessionManager, new ProductManager());
+        return $cart->getTotal();
     }
 }
