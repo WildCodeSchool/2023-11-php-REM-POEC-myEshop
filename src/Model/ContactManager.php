@@ -9,7 +9,7 @@ class ContactManager extends AbstractManager
     public const TABLE = 'contact';
 
     /**
-     * Insert new user in database
+     * Insert new message in database
      */
     public function insert(array $contact): int
     {
