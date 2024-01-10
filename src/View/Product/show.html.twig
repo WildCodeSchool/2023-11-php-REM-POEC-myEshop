@@ -32,7 +32,7 @@
 				<div class="d-flex justify-content-between">
 					<p>Prix:
 						{{ (product.price/100)|number_format(2,",",".") }}€</p>
-					<a href="" class="btn btn-success rounded py-2 px-3">Ajouter</a>
+					<a href="/cart/add?id={{product.id}}" class="btn btn-success rounded py-2 px-3">Ajouter</a>
 				</div>
 			</div>
 		</div>

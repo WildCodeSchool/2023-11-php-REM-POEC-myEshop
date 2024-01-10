@@ -82,6 +82,8 @@ class OrderController extends AbstractController
             $this->orderDetailsManager->insert($orderDetails);
             $this->cart->remove();
             header('Location: /order/show?id=' . $orderId);
+        } else {
+            header('Location: /order');
         }
     }
 

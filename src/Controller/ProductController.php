@@ -34,8 +34,17 @@ class ProductController extends AbstractController
 
     public function show(int $id): string
     {
+        if (!is_numeric($id) || intval($id) != $id || empty($id)) {
+            header("Location: /product");
+            exit();
+        }
+
         $productManager = $this->productManager;
         $product = $productManager->selectOneByIdWithCategory($id);
+        if (!$product) {
+            header("Location: /product");
+            exit();
+        }
         $comments = $productManager->getAllCommentsProductId($id);
         return $this->twig->render('product/show.html.twig', [
             'product' => $product,
