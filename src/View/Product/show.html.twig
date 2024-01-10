@@ -4,15 +4,12 @@
 {% endblock %}
 {% block content %}
 	<div class="container">
-
 		<div class="row col-12 my-5 d-flex justify-content-around gap-2 medium">
-
 			<div style="height:auto; width:30%" class="p_img">
 				<img src="/{{product.illustration}}" style="height:100%; width:100%;object-fit: cover;" alt="{{product.name}}">
 			</div>
 			<div style="height:auto; width:65%" class="shadow-sm p-3 p_content">
 				<h3 class="text-center">{{product.name}}</h3>
-
 				<h5 class="my-4">Categorie :
 					{{product.category_names}}</h5>
 				<div class="d-flex my-2">
