@@ -114,10 +114,8 @@ class ValidationService
             return false;
         }
         if (
-            preg_match('/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/', $lastname) || preg_match(
-                '/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/',
-                $firstname
-            )
+            preg_match('/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/', $lastname) ||
+            preg_match('/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/', $firstname)
         ) {
             $this->session->addFlash('danger', 'Les champs nom/prénom ne doivent pas contenir de caractères spéciaux');
             return false;

@@ -1,13 +1,14 @@
 {% extends 'layout.html.twig' %}
-{% block title %}{% endblock %}
+{% block title %}Home Page{% endblock %}
 {% block stylesheets %}
 	{{ parent() }}
 {% endblock %}
+
 {% block content %}
 
 	<div id="carouselExampleAutoplaying" class="carousel slide p-0 m-0" data-bs-ride="carousel" style="margin: 10px;">
 		<div class="carousel-inner">
-			<div class="carousel-item active">
+			<div class="carousel-item active">			
 				<img src="/assets/images/jjk.jpg" class="d-block w-100 rounded" alt="..." style="height:40vh;">
 			</div>
 			<div class="carousel-item">
@@ -90,8 +91,7 @@
 		<section style="margin: 0 auto;max-width: 150ch;">
 			<p style="margin-top:9%;margin-bottom:5%;">
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt magna sed metus rhoncus, in faucibus mauris hendrerit. Donec ac viverra ante, egestas condimentum enim.
-																																																																																																																																																																																																																																																																							Etiam ut dictum lorem, eget maximus nisi. Nunc hendrerit dolor non elit malesuada, id sollicitudin odio sodales. In hac habitasse platea dictumst. Aliquam sit amet imperdiet elit.
-																																																																																																																																																																																																																																																																							Nulla consequat consequat iaculis. Suspendisse tempor commodo nulla vel auctor. In hac habitasse platea dictumst. Curabitur felis sapien, fringilla et condimentum vel, volutpat ut nulla.</p>
+																																																																																																																																																																																																																																																																							Etiam ut dictum lorem, eget maximus nisi. Nunc hendrerit dolor non elit malesuada, id sollicitudin odio sodales. In hac habitasse platea dictumst. Aliquam sit amet imperdiet elit.																																																																																																																																																																																																																																																																			Nulla consequat consequat iaculis. Suspendisse tempor commodo nulla vel auctor. In hac habitasse platea dictumst. Curabitur felis sapien, fringilla et condimentum vel, volutpat ut nulla.</p>
 		</section>
 	</main>
 	<hr class="featurette-divider">
@@ -180,4 +180,8 @@ let cloneChild = next.cloneNode(true)
 el.appendChild(cloneChild.children[0])
 next = next.nextElementSibling
 }
-})</script>{% endblock %}{% endblock %}
+})
+		</script>
+	{% endblock %}
+{% endblock %}
+
