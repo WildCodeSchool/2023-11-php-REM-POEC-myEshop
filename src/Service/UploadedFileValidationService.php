@@ -21,7 +21,7 @@ class UploadedFileValidationService
     {
         $uploadDir = 'upload/';
         $authorizedExtensions = ['bmp', 'jpeg', 'jpg', 'png', 'gif', 'webp'];
-        $maxFileSize = 10000 * 1000;
+        $maxFileSize = 1000 * 1000;
         $result = ['success' => false, 'uploadFile' => null];
         if (!empty($file['name'])) {
             $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
@@ -44,7 +44,7 @@ class UploadedFileValidationService
         return $result;
     }
 
-    protected function getFileInfo(array &$file, array $authorizedExtensions, int $maxFileSize): ?array
+    protected function getFileInfo(array $file, array $authorizedExtensions, int $maxFileSize): ?array
     {
         $fileInfo = [];
         $fileInfo['extension'] = pathinfo($file['name'], PATHINFO_EXTENSION);

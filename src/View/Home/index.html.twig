@@ -1,24 +1,14 @@
 {% extends 'layout.html.twig' %}
-{% block title %}{% endblock %}
+{% block title %}Home Page{% endblock %}
 {% block stylesheets %}
 	{{ parent() }}
 {% endblock %}
+
 {% block content %}
 
 	<div id="carouselExampleAutoplaying" class="carousel slide p-0 m-0" data-bs-ride="carousel" style="margin: 10px;">
 		<div class="carousel-inner">
-			<div
-				class="carousel-item active">
-				{# <div class="container">
-																	<div class="carousel-caption text-right">
-																		<h1 class="fwt-bolder text-white ">Comic Ultra Verse</h1>
-																		<p class="hoverx fwt-bolder">Découvrez l'univers fascinant des comics et mangas ! Plongez dans nos pages remplies d'aventures épiques, de super-héros intrépides et de personnages inoubliables. Explorez notre collection de comics, manga et goodies.
-																		</p>
-																		<p class="text-center">
-																			<a href="/product" class="btn btn-lg btn-light shadow-sm" role="button">Découvri maintenant</a>
-																		</p>
-																	</div>
-																</div> #}
+			<div class="carousel-item active">			
 				<img src="/assets/images/jjk.jpg" class="d-block w-100 rounded" alt="..." style="height:40vh;">
 			</div>
 			<div class="carousel-item">
@@ -71,7 +61,7 @@
 										<div class="card-img-overlay fw-bold fs-2">
 											<h2 style="background-color:crimson;" class="card-title text-white p-2 border-bottom-1 shadow-lg fw-bold">{{ product.name }}</h2>
 											<div class="d-flex justify-content-center align-items-end">
-												<h2 class="badge bg-success rounded text-white fw-bolder py-2 px-4 mt-4">{{ product.price }}€</h2>
+												<h2 class="badge bg-success rounded text-white fw-bolder py-2 px-4 mt-4">{{ (product.price/100)|number_format(2,",",".") }}€</h2>
 											</div>
 										</div>
 									</div>
@@ -95,18 +85,19 @@
 
 		<script>
 			let items = document.querySelectorAll('.carousel2 .carousel-item2')
-items.forEach((el) => {
-const minPerSlide = 6
-let next = el.nextElementSibling
-for (var i = 1; i < minPerSlide; i++) {
-if (! next) {
-next = items[0]
-}
-let cloneChild = next.cloneNode(true)
-el.appendChild(cloneChild.children[0])
-next = next.nextElementSibling
-}
-})
+			items.forEach((el) => {
+				const minPerSlide = 6
+				let next = el.nextElementSibling
+				for (var i = 1; i < minPerSlide; i++) {
+					if (! next) {
+					next = items[0]
+				}
+
+				let cloneChild = next.cloneNode(true)
+				el.appendChild(cloneChild.children[0])
+				next = next.nextElementSibling
+			}
+			});
 		</script>
 	{% endblock %}
 {% endblock %}
