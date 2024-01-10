@@ -1,0 +1,59 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Ajouter une adresse
+{% endblock %}
+
+{% block content %}
+
+	<div class="container">
+
+		<h3 class="mt-5 mb-3 text-center">Ajouter une adresse</h3>
+		<hr>
+		<form method="post">
+			<div class="row col-md-10 mx-auto">
+				<div class="col-md-6">
+					<label for="firstname">Prénom</label>
+					<input type="text" class="form-control" id="firstname" name="firstname">
+				</div>
+				<div class="col-md-6">
+					<label for="lastname">Nom</label>
+					<input type="text" class="form-control" id="lastname" name="lastname">
+				</div>
+				<div class="col-md-6">
+					<label for="company">Entreprise</label>
+					<input type="text" class="form-control" id="company" name="company">
+				</div>
+				<div class="col-md-6">
+					<label for="name">Nommez votre adresse</label>
+					<input type="text" class="form-control" id="name" name="name">
+				</div>
+				<div class="col-md-12">
+					<label for="address">Adresse</label>
+					<input type="text" class="form-control" id="address" name="address">
+				</div>
+				<div class="col-md-6">
+					<label for="postal">Code postal</label>
+					<input type="text" class="form-control" id="postal" name="postal">
+				</div>
+				<div class="col-md-6">
+					<label for="city">Ville</label>
+					<input type="text" class="form-control" id="city" name="city">
+				</div>
+				<div class="col-md-6">
+					<label for="country">Pays</label>
+					<input type="text" class="form-control" id="country" name="country">
+				</div>
+				<div class="col-md-6">
+					<label for="phone">Téléphone</label>
+					<input type="text" class="form-control" id="phone" name="phone">
+				</div>
+				<div class="col-md-12 text-center">
+					<button type="submit" class="btn btn-primary">Envoyer</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<hr>
+	<a class="text-dark font-weight-bolder" href="">Revenir à mes adresse</a>
+
+{% endblock %}

@@ -10,15 +10,15 @@
 			<div
 				class="carousel-item active">
 				{# <div class="container">
-																	<div class="carousel-caption text-right">
-																		<h1 class="fwt-bolder text-white ">Comic Ultra Verse</h1>
-																		<p class="hoverx fwt-bolder">Découvrez l'univers fascinant des comics et mangas ! Plongez dans nos pages remplies d'aventures épiques, de super-héros intrépides et de personnages inoubliables. Explorez notre collection de comics, manga et goodies.
-																		</p>
-																		<p class="text-center">
-																			<a href="/product" class="btn btn-lg btn-light shadow-sm" role="button">Découvri maintenant</a>
-																		</p>
-																	</div>
-																</div> #}
+																																																																																																																																																																																																																																																																																																																																													<div class="carousel-caption text-right">
+																																																																																																																																																																																																																																																																																																																																														<h1 class="fwt-bolder text-white ">Comic Ultra Verse</h1>
+																																																																																																																																																																																																																																																																																																																																														<p class="hoverx fwt-bolder">Découvrez l'univers fascinant des comics et mangas ! Plongez dans nos pages remplies d'aventures épiques, de super-héros intrépides et de personnages inoubliables. Explorez notre collection de comics, manga et goodies.
+																																																																																																																																																																																																																																																																																																																																														</p>
+																																																																																																																																																																																																																																																																																																																																														<p class="text-center">
+																																																																																																																																																																																																																																																																																																																																															<a href="/product" class="btn btn-lg btn-light shadow-sm" role="button">Découvri maintenant</a>
+																																																																																																																																																																																																																																																																																																																																														</p>
+																																																																																																																																																																																																																																																																																																																																													</div>
+																																																																																																																																																																																																																																																																																																																																												</div> #}
 				<img src="/assets/images/jjk.jpg" class="d-block w-100 rounded" alt="..." style="height:40vh;">
 			</div>
 			<div class="carousel-item">
@@ -55,35 +55,34 @@
 			</aside>
 		{% endfor %}
 	</div>
-	<div style="background-color:black;" class="container text-center my-3 col-12 col-md-9 py-4 px-5 border border-primary shadow-lg">
+	<div style="background-color:black; width:100%" class="container-fluid p-0 m-0 text-center my-5 col-12 col-md-9 py-4 px-5 border border-primary shadow-lg">
 		<h2 class="text-primary text-center fw-bold bg-white my-3 col-12 col-md-5 mx-auto border shadow-sm">Nos meilleurs ventes</h2>
 		<div class="row mx-auto my-auto justify-content-center">
 			<div id="recipeCarousel" class="carousel carousel2 slide" data-bs-ride="carousel">
 				<div class="carousel-inner" role="listbox">
 					{% for product in products %}
-						<a href="/product/show?id={{product.id}}">
-							<div class="carousel-item2 carousel-item{% if loop.first %} active{% endif %}">
-								<div class="col-md-6 col-lg-4 col-xl-3 col-12">
-									<div class="card">
-										<div class="card-img">
-											<img style="object-fit: cover !important; object-position: center top!important; height: 300px !important;" src="{{ product.illustration }}" class="img-fluid d-block w-100" alt="{{ product.name }}">
-										</div>
-										<div class="card-img-overlay fw-bold fs-2">
-											<h2 style="background-color:crimson;" class="card-title text-white p-2 border-bottom-1 shadow-lg fw-bold">{{ product.name }}</h2>
-											<div class="d-flex justify-content-center align-items-end">
-												<h2 class="badge bg-success rounded text-white fw-bolder py-2 px-4 mt-4">{{ product.price }}€</h2>
-											</div>
-										</div>
+						<div class="carousel-item2 carousel-item{% if loop.first %} active{% endif %}">
+							<div class="col-md-6 col-lg-4 col-xl-3 col-12">
+								<div class="card">
+									<div class="card-img">
+										<img style="max-height: 400px" src="/{{ product.illustration}}" class="img-fluid d-block w-100" alt="{{ product.name }}">
+									</div>
+									<div class="card-img-overlay">
+										<a class="nav-link" href="/product/show?id={{product.id}}">
+											<h4 style="background-color:crimson;" class=" text-white p-1 border-bottom-1 shadow-lg fw-bold text-justify">{{ product.name|slice(0,13)}}...</h4>
+										</a>
+										<h5 class="card-title text-center col-5 mx-auto bg-success text-white fw-bold">{{ (product.price / 100)|format(2,'.', ',') }}€</h5>
 									</div>
 								</div>
 							</div>
-						</a>
+						</div>
 					{% endfor %}
 				</div>
-				<a class="carousel-control-prev bg-transparent w-auto" href="#recipeCarousel" role="button" data-bs-slide="prev">
+
+				<a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
 					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 				</a>
-				<a class="carousel-control-next bg-transparent w-auto" href="#recipeCarousel" role="button" data-bs-slide="next">
+				<a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
 					<span class="carousel-control-next-icon" aria-hidden="true"></span>
 				</a>
 			</div>
@@ -96,7 +95,7 @@
 		<script>
 			let items = document.querySelectorAll('.carousel2 .carousel-item2')
 items.forEach((el) => {
-const minPerSlide = 6
+const minPerSlide = 4
 let next = el.nextElementSibling
 for (var i = 1; i < minPerSlide; i++) {
 if (! next) {

@@ -32,7 +32,6 @@ class LoginController extends AbstractController
                 $user = $userManager->verifEmail($email);
                 if ($user && password_verify($password, $user['password'])) {
                     $this->session->set('user', $user);
-                    $this->session->addFlash('success', 'Vous êtes connecté.');
                     header('Location: /');
                     exit();
                 } else {
@@ -49,6 +48,6 @@ class LoginController extends AbstractController
     public function logout()
     {
         $this->session->logOut();
-        return $this->twig->render('Home/index.html.twig', ['session' => $this->session]);
+        header('Location: /');
     }
 }
