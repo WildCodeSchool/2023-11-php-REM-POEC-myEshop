@@ -18,7 +18,7 @@ return [
     'logout' => ['LoginController', 'logout',],
     'profile' => ['UserController', 'index',],
     'contact/add' => ['ContactController', 'add',],
-    'profile/update' => ['UserController', 'update',],
+    'profile/update' => ['UserController', 'update', ['id']],
     'product' => ['ProductController', 'index',],
     'product/show' => ['ProductController', 'show', ['id']],
     'product/search' => ['ProductController', 'searchProduct',],

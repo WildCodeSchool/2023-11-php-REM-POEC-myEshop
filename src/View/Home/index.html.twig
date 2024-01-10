@@ -1,13 +1,16 @@
 {% extends 'layout.html.twig' %}
-{% block title %}{% endblock %}
+{% block title %}Home Page{% endblock %}
 {% block stylesheets %}
 	{{ parent() }}
 {% endblock %}
+
 {% block content %}
 
 	<div id="carouselExampleAutoplaying" class="carousel slide p-0 m-0" data-bs-ride="carousel" style="margin: 10px;">
 		<div class="carousel-inner">
-			<div class="carousel-item active">																																																																																																																																																																																																																																																																																																																																								</div> #}
+
+			<div class="carousel-item active">			
+
 				<img src="/assets/images/jjk.jpg" class="d-block w-100 rounded" alt="..." style="height:40vh;">
 			</div>
 			<div class="carousel-item">
@@ -65,9 +68,11 @@
 											<img style="object-fit: cover !important; object-position: center top!important; height: 300px !important; border-radius:10px;" src="{{ product.illustration }}" class="img-fluid d-block w-100" alt="{{ product.name }}">
 										</div>
 										<div class="card-img-overlay fw-bold fs-2">
-											{# <h2 style="background-color:crimson; border-radius:10px; font-size:20px;" class="card-title text-white p-2 border-bottom-1 shadow-lg fw-bold">{{ product.name }}</h2> #}
-											<div class="d-flex align-items-end">
-												<h2 style="font-size:20px;margin-top:80%;"class="badge bg-success rounded text-white fw-bolder py-2 px-3">{{ product.price }}€</h2>
+
+											<h2 style="background-color:crimson;" class="card-title text-white p-2 border-bottom-1 shadow-lg fw-bold">{{ product.name }}</h2>
+											<div class="d-flex justify-content-center align-items-end">
+												<h2 class="badge bg-success rounded text-white fw-bolder py-2 px-4 mt-4">{{ (product.price/100)|number_format(2,",",".") }}€</h2>
+
 											</div>
 										</div>
 									</div>
@@ -143,6 +148,7 @@ el.appendChild(cloneChild.children[0])
 next = next.nextElementSibling
 }
 })
+
 		</script>
 	{% endblock %}
 {% endblock %}

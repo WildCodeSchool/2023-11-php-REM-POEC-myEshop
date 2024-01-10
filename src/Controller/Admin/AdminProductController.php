@@ -50,8 +50,8 @@ class AdminProductController extends AbstractController
             $illustrationFile = $_FILES['illustration'];
 
             if ($this->validationService->validateProduct($product)) {
-                 $uploadResult = $this->fileUploadService->
-                 validateFileUpload($illustrationFile);
+                $uploadResult = $this->fileUploadService->validateFileUpload($illustrationFile);
+
                 if ($uploadResult['success']) {
                     $this->productManager->insert($product, $uploadResult['uploadFile']);
                     $this->session->addFlash('success', 'Le produit a bien été ajouté');
