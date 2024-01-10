@@ -4,7 +4,28 @@ h1 span {
     opacity: 0;
     transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
+.card_profil{
+    width: 50%;
+}
 
+.img_profil {
+    width:120px;
+    height:120px; 
+    object-fit: cover;
+    border-radius: 50%; 
+    overflow: hidden;
+}
+
+@media screen and (max-width: 992px){
+    .card_profil{
+        width: 70%;
+    }
+}
+@media screen and (max-width: 768px){
+    .card_profil{
+        width: 90%;
+    }
+}
 @keyframes slideLeft {
     from {
         opacity: 0;
