@@ -1,0 +1,57 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}{% endblock %}
+{% block stylesheets %}{% endblock %}
+
+{% block content %}
+
+	<div class="container p-0">
+		{% include "includes/_white_navbar.html.twig" %}
+		<div class="row">
+			{% for product in products.data  %}
+				{% include "includes/_product.html.twig" %}
+			{% endfor %}
+		</div>
+		<nav class="navbar col-12 p-0">
+			<ul class="pagination m-auto border border-secondary shadow-sm rounded">
+				{% if products.currentPage > 1 %}
+					<li class="page-item">
+						<a class="page-link" href="?page=1">&laquo;</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="?page={{ products.currentPage - 1 }}">{{ products.currentPage - 1 }}</a>
+					</li>
+				{% endif %}
+
+				<li class="page-item active">
+					<span class="page-link">{{ products.currentPage }}</span>
+				</li>
+
+				{% if products.currentPage < products.totalPages %}
+					<li class="page-item">
+						<a class="page-link" href="?page={{ products.currentPage + 1 }}">{{ products.currentPage + 1 }}</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="?page={{ products.totalPages }}">&raquo;</a>
+					</li>
+				{% endif %}
+			</ul>
+		</nav>
+	</div>
+</div>
+{% block javascripts %}
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+var currentPath = window.location.pathname;
+
+var categoryLinks = document.querySelectorAll('.category-link');
+categoryLinks.forEach(function (link) {
+var linkPath = link.getAttribute('href');
+if (currentPath.startsWith(linkPath)) {
+link.classList.add('active');
+}
+});
+});
+	</script>
+
+{% endblock %}{% endblock %}

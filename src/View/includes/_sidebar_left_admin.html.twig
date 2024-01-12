@@ -1,0 +1,53 @@
+<!-- Sidebar -->
+
+<aside class="sidebar-bloc col-12">
+	<div class="logo">
+		<div class="img_logo">
+			<img src="/assets/images/logo.png" alt="logo">
+		</div>
+	</div>
+
+	<hr class="sidebar-dividerd-noned-md-block bg-white"></ul>
+
+<div style="width: 100%;" class="accordion accordion-flush" id="accordionFlushExample">
+	<div class="accordion-item">
+		<h2 class="accordion-header" id="flush-headingOne">
+			<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+				Gestion des produits
+			</button>
+		</h2>
+		<div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+			<div class="accordion-body">
+				<a class="nav-link text-info p-1" href="/admin/product">Liste des produits</a>
+				<a class="nav-link text-info p-1" href="/admin/product/create">Ajouter un produit</a>
+				<nav class="navbar-nav ms-auto mx-2">
+					<form method="POST" action="/admin/product/search" class="d-flex nav-item align-items-center justify-content-end fs-5" role="search">
+						<input name="product" value="" class="form-control mx-auto py-2" type="search" placeholder="Rechercher un produit" aria-label="Search" style='max-width: 15rem; height: 30px;'>
+						<button class="btn btn-sm btn-outline-primary py-0 ps-1 ms-1" type="submit">Recherche</button>
+					</form>
+				</nav>
+			</div>
+		</div>
+	</div>
+	<div class="accordion-item">
+		<h2 class="accordion-header" id="flush-headingTwo">
+			<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+				Gestions des catégories
+			</button>
+		</h2>
+		<div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+			<div class="accordion-body">
+				<div class="accordion-body">
+					<a class="nav-link text-info p-1" href="/admin/category">Liste des catégories</a>
+					<a class="nav-link text-info p-1" href="/admin/category">Ajoute une catégorie</a>
+					<nav class="navbar-nav ms-auto mx-2">
+						<form method="post" action="/admin/category/search" class="d-flex nav-item align-items-center justify-content-end fs-5" role="search">
+							<input class="form-control mx-auto py-2" name="category" type="search" placeholder="Rechercher une categorie" aria-label="Search" style='max-width: 15rem; height: 30px;'>
+							<button class="btn btn-sm btn-outline-primary py-0 ps-1 ms-1" type="submit">Recherche</button>
+						</form>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+</div></div></div></div><!--Divider--><hr class="sidebar-dividerd-noned-md-block"></ul><!-- Sidebar Toggler (Sidebar) --><div class="text-center d-none d-md-inline"><button class="rounded-circle border-0" id="sidebarToggle"></button></div></aside>

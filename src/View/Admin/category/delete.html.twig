@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin - Suppression de catégorie
+{% endblock %}
+
+{% block stylesheets %}{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<h1 class="text-center text-primary fw-bold col-12 col-md-6 mx-auto my-4  fw-bold bg-light border border-secondary p-4 shadow-sm">
+			Supprimer une catégorie
+		</h1>
+		<p class="text-center">Voulez-vous vraiment supprimer la catégorie "{{ category.name }}" ?</p>
+		<form method="POST">
+			<input type="hidden" name="id" value="{{ category.id }}">
+			<button oonclick="return confirm('Voulez-vous vraiment supprimer cette catégorie ?');" type="submit" class=" btn btn-danger my-3">Supprimer</button>
+			<a href="admin/category" class="btn btn-secondary">Annuler</a>
+		</form>
+	</div>
+	{% block javascripts %}{% endblock %}
+{% endblock %}

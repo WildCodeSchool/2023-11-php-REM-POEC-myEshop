@@ -1,3 +1,139 @@
 body {
-    color: #f76c6c;
+    background: rgb(246,246,246);
+    background: linear-gradient(90deg, rgba(246,246,246,1) 46%, rgba(199,199,199,1) 76%);
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
 }
+
+h1{
+    color:black;
+    text-align: justify;
+    padding: 16px;
+}
+.index-titre{
+    font-style: italic ;
+}
+h3{
+    text-align: justify;
+    padding: 16px;  
+    font-size: 20px;
+}
+
+
+.bloc_left{
+    background-color: black;
+    padding:20px;
+    min-height: 100vh !important;
+}
+
+.img_logo{
+    width: 8vh;
+    height: 6vh;
+}
+img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.accueil a{
+    text-decoration: none;
+}
+
+.nav_top{
+    padding:20px;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    border-bottom: 3px solid black;
+}
+.nav_titre{
+    color: black;
+    font-size: 24px;
+    margin-left: 5rem;
+}
+.content_box{
+    background-color: #f2f2f2;
+}
+.comment_item, .comment_item small{
+    text-decoration: none;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color:#3b3636;
+    transition: all 0.2s ease-in-out;
+}
+.comment_item:hover{
+    color: #0817f0;  
+    text-decoration: underline;
+}
+
+
+@media screen and (max-width: 768px) {
+    .nav_top{
+        flex-direction: column;
+    }
+    .nav_titre{
+        margin-left: 0;
+    }
+    .bloc_left{
+        min-height: 0!important;
+    }
+    .bloc_right{
+        min-height: 0!important;
+    }
+    .bloc_right{
+        padding: 0;
+    }
+    .medium{
+        flex-direction: column;
+    }
+    .p_img, .p_content{
+        width: 100%!important;
+    }
+    .p_img{
+        height: 400px!important;
+        padding: 0px !important;
+        margin-bottom: 20px;
+    }
+    
+}
+
+
+/***********************/
+/*carousel is_best or carousel product like*/
+/**********************/
+
+@media (max-width: 767px) {
+		.carousel-inner .carousel-item > div {
+			display: none;
+		}
+		.carousel-inner .carousel-item > div:first-child {
+			display: block;
+		}
+	}
+
+	.carousel-inner .carousel-item.active,
+	.carousel-inner .carousel-item-next,
+	.carousel-inner .carousel-item-prev {
+		display: flex;
+	}
+
+	/* medium and up screens */
+	@media (min-width: 768px) {
+
+		.carousel-inner .carousel-item-end.active,
+		.carousel-inner .carousel-item-next {
+			transform: translateX(25%);
+		}
+
+		.carousel-inner .carousel-item-start.active, 
+		.carousel-inner .carousel-item-prev {
+			transform: translateX(-25%);
+		}
+	}
+
+	.carousel-inner .carousel-item-end,
+	.carousel-inner .carousel-item-start { 
+		transform: translateX(0);
+	}

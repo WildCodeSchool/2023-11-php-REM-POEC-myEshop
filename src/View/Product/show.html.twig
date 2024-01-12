@@ -1,0 +1,71 @@
+{% extends "layout.html.twig" %}
+{% block title %}
+	Affichage d'un produit
+{% endblock %}
+{% block content %}
+	<div class="container">
+		<div class="row col-12 my-5 d-flex justify-content-around gap-2 medium">
+			<div style="height:auto; width:30%" class="p_img">
+				<img src="/{{product.illustration}}" style="height:100%; width:100%;object-fit: cover;" alt="{{product.name}}">
+			</div>
+			<div style="height:auto; width:65%" class="shadow-sm p-3 p_content">
+				<h3 class="text-center">{{product.name}}</h3>
+				<h5 class="my-4">Categorie :
+					{{product.category_names}}</h5>
+				<div class="d-flex my-2">
+					<span>
+						{{ comments| length }}
+						<a href="#comments" class="comment_item">
+							<small>avis</small>
+							<i class="bi bi-chevron-down px-2"></i>
+						</a>
+					</span>
+					<span class="mx-2">|</span>
+					<span class="px-3">
+						<a href="/comment/add?id={{ product.id }}" class="comment_item">
+							Laissez un commentaire
+						</a>
+					</span>
+				</div>
+				<p class="mb-5">{{product.description}}</p>
+
+				<div class="d-flex justify-content-between">
+					<p>Prix:
+						{{ (product.price/100)|number_format(2,",",".") }}€</p>
+					<a href="/cart/add?id={{product.id}}" class="btn btn-success rounded py-2 px-3">Ajouter</a>
+				</div>
+			</div>
+		</div>
+
+		<div id="comments" class="my-4 shadow rounded p-5">
+			<h4 class="text-center ">Commentaires</h4>
+
+			{% if comments %}
+				{% for comment in comments %}
+					<div class="border border-primary rounded my-3 p-2">
+						<div class="d-flex align-items-center">
+							<p class="m-0 py-2">Publié par :
+								<span class="fw-bold text-uppercase">{{ comment.lastname }}
+									{{ comment.firstname }}</span>
+								|
+							</p>
+							<p class="m-0 py-2 px-3 text-muted fst-italic">
+								Le :
+								{{ comment.created_at }}</p>
+						</div>
+						<hr class="m-0">
+						<p class="m-0 py-2 text-info">{{ comment.content }}</p>
+					</div>
+				{% endfor %}
+
+			{% else %}
+				<p>Pas de commentaire.<br>
+					Soyez le premier a poster
+					<a href="/comment/add?id={{ product.id }}">un commentaire.</a>
+				</p>
+
+			{% endif %}
+		</div>
+
+	</div>
+{% endblock %}

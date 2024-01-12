@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin - Suppression de catégorie
+{% endblock %}
+
+{% block stylesheets %}{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<h1 class="text-center text-primary fw-bold col-12 col-md-6 mx-auto my-4  fw-bold bg-light border border-secondary p-4 shadow-sm">Modifier la catégorie
+			{{category.name}}</h1>
+		<div class="container">
+			<div class="card mx-auto my-3 col-12 col-md-6">
+				<div class="card-body">
+					<h5 class="card-title">{{category.name}}</h5>
+					<p class="card-text">{{category.description}}</p>
+					<div class="d-flex justify-content-center">
+						<a href="/admin/category" class="btn btn-sm btn-primary" role="button">retour</a>
+						<a href="/admin/category/update?id={{ category.id }}" class="btn btn-sm btn-success" role="button">modifier</a>
+						<a href="/admin/category/delete?id={{ category.id }}" onclick="return confirm('Voulez-vous vraiment supprimer cette catégorie ?');" role="button" class="btn btn-sm btn-danger">supprimer</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% block javascripts %}{% endblock %}
+{% endblock %}

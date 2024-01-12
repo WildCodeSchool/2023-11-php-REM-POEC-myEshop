@@ -1,0 +1,61 @@
+{% extends "base.html.twig" %}
+{% block title %}Admin - Listes des produits
+{% endblock %}
+{% block stylesheets %}{% endblock %}
+{% block content %}
+	<div class="container p-0">
+		<h1 class="text-center text-primary fw-bold col-12 col-md-6 mx-auto my-4  fw-bold bg-light border border-secondary p-4 shadow-sm">Gestion des produits</h1>
+		{% for flashMessage in session.getFlashMessages() %}
+			<div class="alert alert-{{ flashMessage.type }} text-dark fw-bold col-md-5 mx-auto mt-3 p-2 text-center" role="alert">
+				<div class="col-12 d-flex justify-content-end">
+					<button type="button" class="btn-close btn btn-sm btn-{{ flashMessage.type }}" data-bs-dismiss="alert" aria-label="Close">
+						<span class="" aria-hidden="true"></span>
+					</button>
+				</div>
+				<strong>{{ flashMessage.message }}</strong>
+			</div>
+			{{ session.remove('flashMessages') }}
+		{% endfor %}
+		<div class="row my-2 mx-auto col-5 justify-content-center">
+			<a href="/admin" class="btn btn-primary btn-sm mb-4">Retour</a>
+			<a href="/admin/product/create" class="btn btn-success btn-sm mb-4">Ajouter un produit</a>
+		</div>
+		<div class="row">
+			{% for product in products %}
+				<div style="" class="col-12 col-sm-6 col-md-4 col-xl-3 mb-3">
+					<div class="card shadow-sm p-1 mx-1" style=" ">
+						<img style="max-height:200px !important; width:100%" src="/{{product.illustration}}" class="card-img-top img-fluid" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">{{product.name}}
+								- ID:
+								{{product.id}}</h5>
+							<h6 class="my-3">Catégorie:
+								{{product.category_names }}</h6>
+							<hr>
+							<p class="card-text p-2 border text-center">{{product.description|slice(0,50)}}</p>
+							<div class="d-flex justify-content-between">
+								<p class="">stock:
+									{{product.stock}}</p>
+								<p class="">prix:
+									{{ (product.price / 100)|format(2,',', '.') }}€</p>
+							</div>
+							<div class="d-flex justify-content-center">
+								<a href="/admin/product/show?id={{ product.id }}" class="m-1 fs-3 text-info" role="button">
+									<i class="fa-regular fa-eye"></i>
+								</a>
+								<a href="/admin/product/update?id={{ product.id }}" class="m-1 fs-3 text-success" role="button">
+									<i class="fa-solid fa-pen-to-square"></i>
+								</a>
+								<a href="/admin/product/delete?id={{ product.id }}" class="m-1 fs-3 text-danger" role="button">
+									<i class="fa-solid fa-delete-left"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+
+		</div>
+	</div>
+	{% block javascripts %}{% endblock %}
+{% endblock %}

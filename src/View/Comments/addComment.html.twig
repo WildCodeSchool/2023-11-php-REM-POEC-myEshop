@@ -1,0 +1,39 @@
+{% extends "layout.html.twig" %}
+{% block title %}
+	Ajouter un commentaire
+{% endblock %}
+
+{% block content %}
+    <div class="add_comment p-5">
+        <h3 class="text-center">Ajouter un commentaire</h3>
+
+        {% if msgEreur %}
+			
+		    <li class="text-danger my-4">{{ msgEreur }}</li>
+			<a href="/product">Retour</a>
+
+		{% else %}
+            
+            {% if errors %}
+                <ul style='color:red'>
+                    {% for error in errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <form role="form" method="post" class="shadow rounded p-4 mt-5 bg-white">
+                <div class="mb-3">
+                    <label for="comment" >Votre commentaire : </label>
+                    <textarea name="comment" class="form-control border my-2" id="comment" rows="3">
+                    </textarea>               
+                </div> 
+
+                <button type="submit" class="btn btn-info px-2 py-1 rounded">
+                    Enregistrer
+                </button>       
+            </form>
+        {% endif %}
+       
+    </div>
+{% endblock %}

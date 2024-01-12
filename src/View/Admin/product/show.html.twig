@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+{% block title %}
+	Affichage d'un produit
+{% endblock %}
+{% block content %}
+	<div class="container">
+		{% for flashMessage in session.getFlashMessages() %}
+			<div class="alert alert-{{ flashMessage.type }} text-dark fw-bold col-md-5 mx-auto mt-3 p-2 text-center" role="alert">
+				<div class="col-12 d-flex justify-content-end">
+					<button type="button" class="btn-close btn btn-sm btn-{{ flashMessage.type }}" data-bs-dismiss="alert" aria-label="Close">
+						<span class="" aria-hidden="true"></span>
+					</button>
+				</div>
+				<strong>{{ flashMessage.message }}</strong>
+			</div>
+			{{ session.remove('flashMessages') }}
+		{% endfor %}
+		<div class="col-12 col-sm-6 col-md-4 col-xl-3 mb-3 mx-auto my-5">
+			<div class="card shadow-sm p-1" style=" ">
+				<img style="height:200px; width:100%" src="/{{product.illustration}}" class="card-img-top" alt="{{product.name}}">
+				<div class="card-body">
+					<h5 class="card-title">{{product.name}}</h5>
+					<p class="card-text">{{product.description|slice(0,100)}}</p>
+					<a href="/admin/product/update?id={{product.id}}" class="btn btn-success rounded">modifier</a>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

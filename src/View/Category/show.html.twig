@@ -1,0 +1,12 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Admin - Affichage catégorie{% endblock %}
+
+{% block content %}
+	<h1>Catégorie :
+		{{category.name}}</h1>
+	<form action="/categories/delete" method="post">
+		<input type="hidden" name="id" value="{{ category.id}}">
+		<button>Delete</button>
+	</form>
+	<a href="/categories/edit?id={{category.id}}">Editer</a>
+{% endblock %}

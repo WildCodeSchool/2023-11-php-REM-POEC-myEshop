@@ -1,0 +1,90 @@
+<nav style="background:black;" class="navbar navbar-expand-lg py-2 px-1 fs-6" data-bs-theme="dark">
+	<div class="container-fluid">
+		<div class="img_logo p-0 m-0">
+			<img src="/assets/images/logo.png" alt="logo">
+		</div>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse ms-3" id="navbarColor01">
+			<ul style="" class="navbar-nav me-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="/">accueil
+						<span class="visually-hidden">(current)</span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/product">nos comics</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">categories</a>
+					<div class="dropdown-menu">
+						{% for category in getCategories() %}
+							<a class="dropdown-item" href="/category?id={{ category.id }}">{{ category.name }}</a>
+						{% endfor %}
+					</div>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/contact/add">contact</a>
+				</li>
+			</ul>
+			<form method="post" class="rounded ms-auto me-2" action="/product/search">
+				<div class="form-group d-flex">
+					<div style="width:100%;" class="form-outline mx-auto " data-mdb-input-init>
+						<input type="search" id="form1" name="product" class="form-control"/>
+					</div>
+					<button type="submit" class="btn btn-sm btn-primary ms-2">
+						<i class="fas fa-search fs-5"></i>
+					</button>
+				</div>
+			</form>
+			<ul class="navbar-nav me-5">
+				{% if getTotal() > 0 %}
+					<li class="nav-item">
+						<a class="nav-link" href="/cart">
+							<i class="fa-solid fa-shopping-cart"></i>
+							<span class="badge rounded-pill bg-danger">
+								{{(getTotal() / 100) | number_format(2, ',', '.')}}€</span>
+						</a>
+					</li>
+				{% endif %}
+				{% if isLogged() %}
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle text-success" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+							<i class="fa-solid fa-user"></i>
+						</a>
+						<div class="dropdown-menu me-1 fw-bolder">
+							<a class="dropdown-item" href="/profile">profile</a>
+							{% if isAdmin() %}
+								<a class="dropdown-item" href="/admin">backoffice</a>
+							{% endif %}
+							<a class="dropdown-item" href="/logout">
+								<i class="fa-solid fa-power-off" alt="deconnexion"></i>
+							</a>
+						</div>
+					{% else %}
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+								<i class="fa-solid fa-user-plus"></i>
+							</a>
+							<div class="dropdown-menu me-1 fw-bolder">
+								<a class="dropdown-item" href="/register">inscription</a>
+								<a class="dropdown-item" href="/login">connexion</a>
+							</div>
+						{% endif %}
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	{% for flashMessage in session.getFlashMessages() %}
+		<div class="alert alert-{{ flashMessage.type }} text-dark fw-bold col-md-5 mx-auto mt-3 p-2 text-center" role="alert">
+			<div class="col-12 d-flex justify-content-end">
+				<button type="button" class="btn-close btn btn-sm btn-{{ flashMessage.type }}" data-bs-dismiss="alert" aria-label="Close">
+					<span class="" aria-hidden="true"></span>
+				</button>
+			</div>
+			<strong>{{ flashMessage.message }}</strong>
+		</div>
+		{{ session.remove('flashMessages') }}
+	{% endfor %}
